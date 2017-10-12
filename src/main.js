@@ -11,7 +11,7 @@ import './config/rem'
 import './style/common.scss'
 // 使用mint-ui
 // 按需引入部分组件
-import { Indicator, Toast, MessageBox, Lazyload } from 'mint-ui'
+import { Indicator, Toast, Lazyload } from 'mint-ui'
 
 // 设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false
@@ -23,7 +23,6 @@ Vue.use(Vuex)
 
 Vue.use(Indicator) // loading
 Vue.use(Toast)// 提示框组件
-Vue.use(MessageBox)// 弹框组件
 Vue.use(Lazyload)// 懒加载
 
 // 定义状态管理

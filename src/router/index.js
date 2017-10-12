@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+// 首页
+import Home from '@/views/Home'
 
 Vue.use(Router)
 
@@ -8,8 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: HelloWorld
+      component: Home
     }
   ]
 })

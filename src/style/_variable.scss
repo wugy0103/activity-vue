@@ -1,0 +1,243 @@
+// 主题色
+$mainColor: #ff2c29;
+// 成功色
+$successColor: #37c6b0;
+// 提醒色
+$noticeColor: #f8a906;
+// 链接颜色
+$linkColor: #4a90e2;
+// 辅助色/警告色
+$warningColor: #ff6333;
+
+/// 文字颜色
+// 文字主色
+$textColorDarker: #464854;
+// 文字次色
+$textColorDark: #737787;
+// 文字辅色
+$textColorLight: #a2a7ba;
+// 文字输入框placeholder颜色
+$textColorLighter: #c3c8dc;
+
+//字体
+$PingFangStyle: PingFangSC-Regular;
+$HelveticaNeuestyle: HelveticaNeue;
+$PingFang-SC-style: PingFang-SC-Regular;
+$PingFang-SCM-style: PingFang-SC-Medium;
+// 背景、分割线颜色
+// 背景主题色
+$backgroundColor:#F5F6FA;
+// 边框、分割线
+//$borderColor:#E4E7F2;
+$borderColor:#f0f8ff;
+//区域分割色
+$areaColor:#F5F6FA;
+//主题色
+$backgroundMainColor: #ff2c29;
+// 成功色
+$backgroundSuccessColor: #37c6b0;
+// 渐变色
+$gradualColorLight:#FF6333;
+$gradualColorLighter:#FF2C29;
+// 提醒色底色
+$warnColor:#FFFDD0 ;
+
+/// 按钮颜色
+/// 实心按钮
+// 危险颜色
+$btnDangerColor: #E64340;
+$btnDangerDarkColor: #CF3C3A;
+$btnDangerLightColor: #EB8A88;
+
+// 成功按钮颜色
+$btnSuccessColor: #37C6B0;
+$btnSuccessDarkColor: #33B5A1;
+$btnSuccessLightColor:  #9AD6CD;
+
+// 警告颜色（渐变）
+$btnWarningColor: linear-gradient(-45deg, #FF2C29 0%, #FF6333 100%);
+$btnWarningDarkColor: linear-gradient(-45deg, #E82825 0%, #E85A2E 100%);
+$btnWarningLightColor: linear-gradient(-45deg, #F2726F 0%, #F29579 100%);
+
+// 提醒颜色
+$btnNoticeColor:  #FF6333;
+$btnNoticeDarkColor: #E85A2E;
+$btnNoticeLightColor: #FF8A66;
+
+
+// 按钮封装
+.btn{
+    margin: 0 auto;
+    padding: 0.14rem;
+    font-size: 0.18rem;
+    line-height: 0.18rem;
+    text-align: center;
+    color: #fff;
+    border-radius: 1rem;
+
+    // 危险颜色，橙红
+    &.btn-danger{
+        background-color: $btnDangerColor;
+    }
+    &.btn-danger-dark{
+        background-color: $btnDangerDarkColor;
+    }
+    &.btn-danger-light{
+        background-color: $btnDangerLightColor;
+    }
+
+    // 成功按钮，绿色
+    &.btn-success{
+        background-color: $btnSuccessColor;
+    }
+    &.btn-success-dark{
+        background-color: $btnSuccessDarkColor;
+    }
+    &.btn-success-light{
+        background-color: $btnSuccessLightColor;
+    }
+   
+    // 警告按钮 渐变
+    &.btn-warning{
+        background-image: $btnWarningColor;
+    }
+    &.btn-warning-dark{
+        background-image: $btnWarningDarkColor;
+    }
+    &.btn-warning-light{
+        background-image: $btnWarningLightColor;
+    }
+
+    // 提醒按钮 橙黄
+    &.btn-notice{
+        background-color: $btnNoticeColor;
+    }
+    &.btn-notice-dark{
+        background-color: $btnNoticeDarkColor;
+    }
+    &.btn-notice-light{
+        background-color: $btnNoticeLightColor;
+    }
+
+
+    // 大按钮
+    &.btn-lg{
+        display: block;
+    }
+}
+
+/// 空心按钮
+// 成功按钮
+$btnHollowSuccessColor:  #37C6B0;
+// 危险按钮
+$btnHollowDangerColor: #FF2C29;
+.btn-hollow{
+    font-size: .14rem;
+    background-color: #fff;
+    padding: .08rem .15rem;
+    border-radius: 0.2rem;
+    
+    &.btn-hl-success{
+        border: 1px solid $btnHollowSuccessColor;
+        color: $btnHollowSuccessColor;
+    }
+
+    &.btn-hl-danger{
+        border: 1px solid $btnHollowDangerColor;
+        color: $btnHollowDangerColor;
+    }
+    &.btn-hl-light{
+        opacity: .6;
+    }
+}
+
+// //按钮的状态
+// //页面主操作Normal
+// $buttonMainNormalColor:#FF2C29;
+// $textMainNormalColor:#FFFFFF;
+// //页面次操作Normal
+// $buttonNextNormalColor:#37C6B0;
+// $textNextNormalColor:#FFFFFF;
+// //页面主操作HL
+// $buttonMainHLColor:#E62825;
+// $textMainHLColor:#FFFFFF 60%;
+// //页面次操作HL
+// $buttonNextHLColor:#33B5A1;
+// $textNextHLColor:#FFFFFF 60%;
+// //页面主操作Disable
+// $buttonMainDisableColor:#FF918F;
+// $textMainDisableColor:#FFFFFF 60%;
+// //页面次操作Disable
+// $buttonNextDisableColor:#9AD6CD;
+// $textNextDisableColor:#FFFFFF 60%;
+// //页面次操作(白) Normal
+// $buttonNextNormalOneColor:#FFFFFF;
+// $textNextNormalOneColor:#464854;
+// $borderNextNormalOneColor:#E4E7F2;
+// //页面次操作(橙) Normal
+// $buttonNextNormalTwoColor:#FF6333;
+// $textNextNormalTwoColor:#FFFFFF;
+// //页面次操作(米白) HL
+// $buttonNextHLOneColor:#DBDBDB;
+// $textNextHLOneColor:#464854 60%;
+// //页面次操作(橙+) HL
+// $buttonNextHLTwoColor:#E85A2E;
+// $textNextHLTwoColor:#FFFFFF 60%;
+// //页面次操作Disable
+// $buttonNextDisableOneColor:#F6F6F6;
+// $textNextDisableOneColor:#464854 30%;
+// $borderNextDisableOneColor:#E4E7F2;
+// //页面次操作 Disable
+// $buttonNextDisableTwoColor:#FF8A66;
+// $textNextDisableTwoColor:#FFFFFF 60%;
+// //按钮颜色
+// $borderLightOneColor:#FF2C29;
+// $textLightOneColor:#FF2C29;
+// $borderLighterOneColor:#FF2C29 60%;
+// $textLighterOneColor:#FF2C29 60%;
+// $borderLightsOneColor:#FF2C29 30%;
+// $textLightsOneColor:#FF2C29 30%;
+
+// $borderLightTwoColor:#A2A7BA;
+// $textLightTwoColor:#464854;
+// $borderLighterTwoColor:#A2A7BA 60%;
+// $textLighterTwoColor:#464854 60%;
+// $borderLightsTwoColor:#A2A7BA 30%;
+// $textLightsTwoColor:#464854 30%;
+
+// $borderLightThColor:#37C6B0;
+// $textLightThColor:#37C6B0;
+// $borderLighterThColor:#37C6B0 60%;
+// $textLighterThColor:#37C6B0 60%;
+// $borderLightsThColor:#37C6B0 30%;
+// $textLightsThColor:#37C6B0 30%;
+
+// //页面主操作Normal(圆)
+// $buttonMainNormalCilColor:#FF6333——>#FF2C29;
+// $textMainNormalCilColor:#FFFFFF;
+// //页面主操作HL(圆)
+// $buttonMainHLCilColor:#E85A2E——>#E82825;
+// $textMainHLCilColor:#FFFFFF 60%;
+// //页面主操作HL(圆)
+// $buttonMainHLCilTwoColor:#F29579——>#F2726F;
+// $textMainHLCilTwoColor:#FFFFFF 60%;
+// //页面主操作Normal(方)
+// $buttonMainNormalSquColor:#FF2C29;
+// $textMainNormalSquColor:#FFFFFF;
+// //页面主操作HL(方)
+// $buttonMainHLSquColor:#E62825;
+// $textMainHLSquColor:#FFFFFF 60%;
+// //页面主操作Disable(方)
+// $buttonMainDisableSquColor:#FF918F;
+// $textMainDisableSquColor:#FFFFFF 60%;
+// //页面次操作Normal(方)
+// $buttonNextNormalSquColor:#FFFFFF;
+// $textNextNormalSquColor:#464854;
+// $borderNextNormalSquColor:#E4E7F2;
+// //页面次操作HL(方)
+// $buttonNextHLSquColor:#DBDBDB;
+// $textNextHLSquColor:#464854 60%;
+// //页面次操作Disable(方)
+// $buttonNextDisableSquColor:#FFFFFF;
+// $textNextDisableSquColor:#464854 30%;
+// $borderNextDisableSquColor:#E4E7F2;

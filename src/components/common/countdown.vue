@@ -122,7 +122,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this)
     this.gogogo()
   },
   methods: {

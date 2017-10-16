@@ -2,17 +2,20 @@
 <div class="layout">
    <singleTemplate></singleTemplate>
    <countDownTemplate></countDownTemplate>
+   <couponTemplate></couponTemplate>
  </div>
 </template>
 
 <script>
   import singleTemplate from '../components/home/singleTemplate.vue'
   import countDownTemplate from '../components/home/countDownTemplate.vue'
+  import couponTemplate from '../components/home/couponTemplate.vue'
   
   export default {
     components: {
       singleTemplate,
-      countDownTemplate
+      countDownTemplate,
+      couponTemplate
     }
   }
 </script>

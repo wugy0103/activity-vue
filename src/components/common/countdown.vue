@@ -1,19 +1,19 @@
 <template>
   <div>
-    <p v-if="msTime.show">
+    <div v-if="msTime.show">
       <!--<span v-if="tipShow">{{tipText}}:</span>-->
       <!--<span v-if="!tipShow">{{tipTextEnd}}:</span>-->
-      <span v-if="msTime.day>0">
+      <b v-if="msTime.day>0">
         <span>{{msTime.day}}</span>
         <i>{{dayTxt}}</i>
-      </span>
+      </b>
       <span>{{msTime.hour}}</span>
       <i>{{hourTxt}}</i>
       <span>{{msTime.minutes}}</span>
       <i>{{minutesTxt}}</i>
-      <span>{{msTime.seconds}}</span>
+      <span class="active">{{msTime.seconds}}</span>
       <i>{{secondsTxt}}</i>
-    </p>
+    </div>
     <!--<p v-if="!msTime.show">{{endText}}</p>-->
   </div>
 </template>
@@ -204,3 +204,30 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '../../style/_variable';
+.count-down {
+    font-family: $HelveticaNeuestyle;
+    font-size: 0.18rem;
+    line-height: 0.28rem;
+    margin-bottom: 0.1rem;
+    span {
+      color: $countDownForeColor;
+      background: #FFFFFF;
+      border-radius: 0.04rem;
+      margin: 0 0.01rem;
+      padding: 0 0.025rem;
+      &.active {
+        background: #FF2C29;
+        color: #ffffff;
+      }
+    }
+    i {
+      font-family: $PingFangStyle;
+      font-size: 0.14rem;
+      color: $countDownFontColor;
+    }
+  }
+  
+</style>

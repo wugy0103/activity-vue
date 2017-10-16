@@ -1,5 +1,18 @@
 <template>
   <div>
+    <!-- <div v-if="msTime.show"> -->
+      <!-- <b v-if="msTime.day>0"> -->
+        <!-- <span v-for="(index,item) of splitedTime.day" :key="index">{{item}}</span> -->
+        <!-- <i>{{dayTxt}}</i> -->
+      <!-- </b> -->
+      <!-- <span v-for="(index,item) of splitedTime.hour" :key="index">{{item}}</span> -->
+      <!-- <i>{{hourTxt}}</i> -->
+      <!-- <span v-for="(index,item) of splitedTime.minues" :key="index">{{item}}</span> -->
+      <!-- <i>{{minutesTxt}}</i> -->
+      <!-- <span class="active" v-for="(index,item) of splitedTime.seconds" :key="index">{{item}}</span> -->
+      <!-- <i>{{secondsTxt}}</i> -->
+    <!-- </div> -->
+
     <div v-if="msTime.show">
       <!--<span v-if="tipShow">{{tipText}}:</span>-->
       <!--<span v-if="!tipShow">{{tipTextEnd}}:</span>-->
@@ -14,6 +27,7 @@
       <span class="active">{{msTime.seconds}}</span>
       <i>{{secondsTxt}}</i>
     </div>
+
     <!--<p v-if="!msTime.show">{{endText}}</p>-->
   </div>
 </template>
@@ -114,14 +128,17 @@ export default {
   methods: {
     gogogo: function () {
       // 判断是秒还是毫秒
-      this.startTime.toString().length === 10 ? this.star = this.startTime * 1000 : this.star = this.startTime
       this.endTime.toString().length === 10 ? this.end = this.endTime * 1000 : this.end = this.endTime
       if (this.currentTime) {
         this.currentTime.toString().length === 10 ? this.current = this.currentTime * 1000 : this.current = this.currentTime
       } else {
         this.current = (new Date()).getTime()
       }
-
+      if (this.startTime) {
+        this.startTime.toString().length === 10 ? this.star = this.startTime * 1000 : this.star = this.startTime
+      } else {
+        this.star = this.current
+      }
       if (this.end < this.current) {
         /**
          * 结束时间小于当前时间 活动已结束
@@ -164,14 +181,17 @@ export default {
         msTime.seconds = Math.floor(timeDistance / 1000).toFixed(0)
         timeDistance -= msTime.seconds * 1000
 
+        if (msTime.day < 10) {
+          msTime.day = '0' + msTime.day
+        }
         if (msTime.hour < 10) {
-          msTime.hour = 0 + msTime.hour
+          msTime.hour = '0' + msTime.hour
         }
         if (msTime.minutes < 10) {
-          msTime.minutes = 0 + msTime.minutes
+          msTime.minutes = '0' + msTime.minutes
         }
         if (msTime.seconds < 10) {
-          msTime.seconds = 0 + msTime.seconds
+          msTime.seconds = '0' + msTime.seconds
         }
         let _s = Date.now()
         let _e = Date.now()
@@ -202,6 +222,17 @@ export default {
       this.$emit('end_callback', this.msTime.show)
     }
   }
+  // computed: {
+  //   splitedTime: function () {
+  //     debugger
+  //     let splitedTime = {}
+  //     splitedTime.day = this.msTime.day.split('')
+  //     splitedTime.hour = this.msTime.hour.split('')
+  //     splitedTime.minutes = this.msTime.minutes.split('')
+  //     splitedTime.seconds = this.msTime.seconds.split('')
+  //     return splitedTime
+  //   }
+  // }
 }
 </script>
 

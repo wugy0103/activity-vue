@@ -11,7 +11,7 @@
     </div>
 
     <ul class="clear">
-      <li class="clear one deactive">
+      <li class="clear">
         <div class="pull-left">
           <div class="price">¥
             <b>200</b>
@@ -21,7 +21,7 @@
         </div>
         <a class="pull-right" href="javascript:;"></a>
       </li>
-      <!-- <li class="clear deactive">
+      <li class="clear deactive">
   				<div class="pull-left">
   					<div class="price">¥
   						<b>200</b>
@@ -42,10 +42,10 @@
   				<a class="pull-right" href="javascript:;"></a>
   			</li>
   			<li class="placeholder">
-  				<a href="javascript:;">
+  				<a class="clear" href="javascript:;">
   					<img src="../../images/youhuijuan_placeholder@2x.png" width="100%" alt="">
   				</a>
-  			</li> -->
+  			</li>
 
     </ul>
 
@@ -142,7 +142,9 @@ export default {
   li.placeholder {
     background: none;
     padding: 0;
-    a,
+    a {
+      display: block;
+    }
     img {
       float: left;
     }

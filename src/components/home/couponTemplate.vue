@@ -1,10 +1,11 @@
 <template>
 	<div class="couponTemplate">
-		<div class="header">
+		<!-- <div class="header">
 			<a class="pull-left" href="javascript:;">
 				<img class="pull-left" src="../../images/toutu.png" width="100%" alt="png">
 			</a>
-		</div>
+		</div> -->
+		<singleTemplate></singleTemplate>
 		<div class="clear">
 			<div class="usageBtn">使用规则</div>
 		</div>
@@ -50,6 +51,16 @@
 
 	</div>
 </template>
+
+<script>
+  import singleTemplate from './singleTemplate.vue'
+  export default {
+    components: {
+      singleTemplate
+    }
+  }
+</script>
+
 <style lang="scss" scoped>
 @import '../../style/common';
 .couponTemplate {
@@ -67,6 +78,7 @@
 		margin-right: 0.08rem;
 		margin-bottom: 0.06rem;
 		text-align: center;
+		cursor: pointer;
 	}
 	li {
 		float: left;

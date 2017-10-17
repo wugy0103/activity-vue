@@ -3,6 +3,8 @@
    <singleTemplate></singleTemplate>
    <countDownTemplate></countDownTemplate>
    <couponTemplate></couponTemplate>
+   <bigraphTemplate></bigraphTemplate>
+   <threeTemplate></threeTemplate>
  </div>
 </template>
 
@@ -10,12 +12,16 @@
   import singleTemplate from '../components/home/singleTemplate.vue'
   import countDownTemplate from '../components/home/countDownTemplate.vue'
   import couponTemplate from '../components/home/couponTemplate.vue'
+  import bigraphTemplate from '../components/home/bigraphTemplate.vue'
+  import threeTemplate from '../components/home/threeTemplate.vue'
   
   export default {
     components: {
       singleTemplate,
       countDownTemplate,
-      couponTemplate
+      couponTemplate,
+      bigraphTemplate,
+      threeTemplate
     }
   }
 </script>

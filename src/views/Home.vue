@@ -21,12 +21,14 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import '../style/common';
   .layout {
     width: 100%;
     max-width: 768px;
     min-width: 300px;
     margin: 0 auto;
+    background-color: $backgroundColor;
   }
 
 </style>

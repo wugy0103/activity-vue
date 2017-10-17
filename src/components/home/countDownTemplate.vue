@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/_variable';
+@import '../../style/common';
 .countDownTemplate {
   width: 100%;
   background: $countDownBGC;

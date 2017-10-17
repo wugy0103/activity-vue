@@ -235,7 +235,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/_variable';
+@import '../../style/common';
 .count-down {
     font-family: $HelveticaNeuestyle;
     font-size: 0.18rem;
@@ -248,7 +248,7 @@ export default {
       margin: 0 0.01rem;
       padding: 0 0.025rem;
       &.active {
-        background: #FF2C29;
+        background: $mainColor;
         color: #ffffff;
       }
     }

@@ -17,7 +17,7 @@
             <b>200</b>
           </div>
           <i class="usage">满¥1000使用</i>
-          <span class="info">全场满减商品通用</span>
+          <span class="info ellipsis">全场满减商品通用</span>
         </div>
         <a class="pull-right" href="javascript:;"></a>
       </li>
@@ -27,7 +27,7 @@
   						<b>200</b>
   					</div>
   					<i class="usage">满¥1000使用</i>
-  					<span class="info">全场满减商品通用</span>
+  					<span class="info ellipsis">全场满减商品通用</span>
   				</div>
   				<a class="pull-right" href="javascript:;"></a>
   			</li>
@@ -37,7 +37,7 @@
   						<b>200</b>
   					</div>
   					<i class="usage">满¥1000使用</i>
-  					<span class="info">全场满减商品通用</span>
+  					<span class="info ellipsis">全场满减商品通用</span>
   				</div>
   				<a class="pull-right" href="javascript:;"></a>
   			</li>

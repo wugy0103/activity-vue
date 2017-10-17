@@ -52,6 +52,7 @@ html,body{
     height: 100%;
     width: 100%;
     font-size: 100px;
+    background-color: #f1f1f1;
 }
 
 
@@ -85,6 +86,13 @@ html,body{
     white-space: nowrap;
 }
 
+.ellipsis-lin2{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
 //统一二级头部距离顶部高度，预留一级头部距离
 .margin-top{
   margin-top: 0.44rem;
@@ -111,4 +119,6 @@ html,body{
 
 img {
     vertical-align: top;
+    float: left;
+    width: 100%;
 }

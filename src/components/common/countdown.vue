@@ -1,17 +1,17 @@
 <template>
   <div>
-    <!-- <div v-if="msTime.show"> -->
-      <!-- <b v-if="msTime.day>0"> -->
-        <!-- <span v-for="(index,item) of splitedTime.day" :key="index">{{item}}</span> -->
-        <!-- <i>{{dayTxt}}</i> -->
-      <!-- </b> -->
-      <!-- <span v-for="(index,item) of splitedTime.hour" :key="index">{{item}}</span> -->
-      <!-- <i>{{hourTxt}}</i> -->
-      <!-- <span v-for="(index,item) of splitedTime.minues" :key="index">{{item}}</span> -->
-      <!-- <i>{{minutesTxt}}</i> -->
-      <!-- <span class="active" v-for="(index,item) of splitedTime.seconds" :key="index">{{item}}</span> -->
-      <!-- <i>{{secondsTxt}}</i> -->
-    <!-- </div> -->
+    <!--<div v-if="msTime.show">
+      <b v-if="msTime.day>0">
+        <span v-for="(index,item) of splitedTime.day" :key="index">{{item}}</span>
+        <i>{{dayTxt}}</i>
+      </b>
+      <span v-for="(index,item) of splitedTime.hour" :key="index">{{item}}</span>
+      <i>{{hourTxt}}</i>
+      <span v-for="(index,item) of splitedTime.minues" :key="index">{{item}}</span>
+      <i>{{minutesTxt}}</i>
+      <span class="active" v-for="(index,item) of splitedTime.seconds" :key="index">{{item}}</span>
+      <i>{{secondsTxt}}</i>
+    </div>-->
 
     <div v-if="msTime.show">
       <!--<span v-if="tipShow">{{tipText}}:</span>-->
@@ -223,12 +223,11 @@ export default {
   }
   // computed: {
   //   splitedTime: function () {
-  //     debugger
   //     let splitedTime = {}
-  //     splitedTime.day = this.msTime.day.split('')
-  //     splitedTime.hour = this.msTime.hour.split('')
-  //     splitedTime.minutes = this.msTime.minutes.split('')
-  //     splitedTime.seconds = this.msTime.seconds.split('')
+  //     splitedTime.day = this.msTime.day ? this.msTime.day.split('') : 0
+  //     splitedTime.hour = this.msTime.hour ? this.msTime.hour.split('') : 0
+  //     splitedTime.minutes = this.msTime.minutes ? this.msTime.minutes.split('') : 0
+  //     splitedTime.seconds = this.msTime.seconds ? this.msTime.seconds.split('') : 0
   //     return splitedTime
   //   }
   // }

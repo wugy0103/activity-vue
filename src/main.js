@@ -10,8 +10,8 @@ import './config/rem'
 // 加载全局scss
 import './style/common.scss'
 // 使用mint-ui
-// 按需引入部分组件
-import { Indicator, Toast, Lazyload } from 'mint-ui'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 
 // 设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false
@@ -21,53 +21,15 @@ Vue.prototype.$ajax = axios
 // 加载各模块
 Vue.use(Vuex)
 
-Vue.use(Indicator) // loading
-Vue.use(Toast)// 提示框组件
-Vue.use(Lazyload)// 懒加载
+Vue.use(MintUI)
 
 // 定义状态管理
 var store = new Vuex.Store({
   state: {
-    swiperOption: {
-      autoplay: 3000,
-      setWrapperSize: true,
-      pagination: '.swiper-pagination',
-      paginationClickable: true,
-      mousewheelControl: true,
-      observeParents: true,
-      autoplayDisableOnInteraction: false,
-      myfavoriteTab: ''
-    },
-    swiperSlides: [],
-    // demo测试
-    isshow: false,
-    // 竞拍须等5分钟
-    isWaiting: false,
-    // 切换列表页搜索栏状态
-    isShowListSearch: true,
-    // 是否进入筛选侧边栏
-    isShowsideBar: false,
-    // 是否进入列表页搜索
-    isSearchGolist: false,
-    // 是否竞拍
-    isJingpai: '',
-    // 点击发票信息是否进入发票需知
-    isTicks: false,
-    // 点击买家留言是否进入留言框
-    isUserMesage: false,
-    // 拍卖列表数据集合
-    state: 0,
-    // 拍卖列表是否为空
-    isShowList: true,
-    // 拍卖列表商品的个数
-    saleTotal: '',
-    // 倒计时时间毫秒数
-    saleCountdown: [],
-    // 我的竞拍页面标签页切换标志
-    tabSign: 0,
-    // 拍卖状态码
-    orderStatus: 0,
-    test: 1
+    // 专题信息
+    topic: {
+      backgroundPic: ''
+    }
   },
   getters: {
     // 处理state中的数据;
@@ -88,71 +50,36 @@ var store = new Vuex.Store({
     }
   },
   mutations: {
-    // 获取拍卖列表不同状态的数据
-    setState (state, data) {
-      axios.post('/auctionList/auction/queryAuctionList', {
-        pageNum: 1,
-        status: data  // 0 1 2  3
-      }).then((data) => {
-        if (data.data.model === null) {
-          alert('数据异常')
-        } else if (data.data.model.length === 0) {
-          state.isShowList = false
-          state.saleTotal = 0
+    // 获取专题数据
+    getTopic (state, data) {
+      MintUI.Indicator.open()
+      axios.get('http://192.168.60.11:8184/acSubject/getSubjectInfoById', {
+        params: data
+      }).then((res) => {
+        MintUI.Indicator.close()
+        if (res.data.success) {
+          state.topic = res.data.model
+          document.title = state.topic.shortTitle
         } else {
-          state.isShowList = true
-          state.state = data.data.model
-          console.log(data)
-          state.saleTotal = data.data.query.total
+          MintUI.Toast({
+            message: res.data.message || '接口异常！',
+            className: 'Toast'
+          })
         }
+      }, (rej) => {
+        console.log(rej)
+        MintUI.Indicator.close()
+        MintUI.Toast({
+          message: '网络繁忙！',
+          className: 'Toast'
+        })
       })
-      /* var data = [
-        {
-          currPrice: 1020,
-          endDate: 1506112946000,
-          prodName: '乔丹新品运动鞋防滑耐磨缓震篮球鞋战靴XM1560112',
-          prodPic: 'group2/M00/00/1C/Z-veKFeOIB6AS7KZAAK0wMMkkIw990.jpg',
-          totalBidPriceNum: 120,
-          startDate:1506012946000
-        },
-        {
-          currPrice: 1090,
-          endDate: 1506978945500,
-          prodName: '乔丹新品运动鞋防滑耐磨缓震篮球鞋战靴XM1560112',
-          prodPic: 'group2/M00/00/1C/Z-veKFeOIB6AS7KZAAK0wMMkkIw990.jpg',
-          totalBidPriceNum: 120,
-          startDate:1506712946000
-        },
-        {
-          currPrice: 1040,
-          endDate: 1509872945040,
-          prodName: '乔丹新品运动鞋防滑耐磨缓震篮球鞋战靴XM1560112',
-          prodPic: 'group2/M00/00/1C/Z-veKFeOIB6AS7KZAAK0wMMkkIw990.jpg',
-          totalBidPriceNum: 140,
-          startDate:1509672945040
-        },
-        {
-          currPrice: 1088,
-          endDate: 1506972945000,
-          prodName: '乔丹新品运动鞋防滑耐磨缓震篮球鞋战靴XM1560112',
-          prodPic: 'group2/M00/00/1C/Z-veKFeOIB6AS7KZAAK0wMMkkIw990.jpg',
-          totalBidPriceNum: 60,
-          startDate:1509872945040
-
-        }
-      ]
-      state.state = data */
-    },
-    setStatus (state, data) {
-      state.orderStatus = data
-      // console.log(state.orderStatus)
     }
   },
   actions: {
     // 列表页数据
-    setState (context, data) {
-      context.commit('setState', data)
-      context.commit('setStatus', data)
+    getTopic (context, data) {
+      context.commit('getTopic', data)
     }
   }
 })

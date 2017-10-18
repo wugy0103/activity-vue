@@ -1,13 +1,7 @@
 <template>
-  <div class="layout" :style="styleObj">
+  <div class="layout">
     <singleTemplate :imgSrc="'/static/images/header.png'" :url="'http://m.daxmall.com'"></singleTemplate>
-    <countDownTemplate></countDownTemplate>
-    <couponTemplate></couponTemplate>
-    <bigraphTemplate></bigraphTemplate>
-    <threeTemplate></threeTemplate>
-    <productTemplate></productTemplate>
-    <iconTemplate></iconTemplate>
-    <share></share>
+    
   </div>
 </template>
 
@@ -19,7 +13,6 @@ import bigraphTemplate from '../components/home/bigraphTemplate.vue'
 import threeTemplate from '../components/home/threeTemplate.vue'
 import productTemplate from '../components/home/productTemplate.vue'
 import iconTemplate from '../components/home/iconTemplate.vue'
-import share from '../components/common/share.vue'
 
 export default {
   components: {
@@ -29,27 +22,9 @@ export default {
     bigraphTemplate,
     threeTemplate,
     productTemplate,
-    iconTemplate,
-    share
-  },
-  data () {
-    return {
-      styleObj: {
-        background: '#fff url(' + this.$store.state.topic.backgroundPic + ') repeat-y top left'
-      }
-    }
+    iconTemplate
   },
   methods: {
-  },
-  computed: {
-    // 监听返回不同状态的数据
-    topic () {
-      return this.$store.state.topic
-    }
-
-  },
-  mounted () {
-    this.$store.dispatch('getTopic', this.$route.params)
   }
 }
 </script>
@@ -62,6 +37,6 @@ export default {
   max-width: 768px;
   min-width: 300px;
   margin: 0 auto;
-  background: $backgroundColor;
+  background-color: $backgroundColor;
 }
 </style>

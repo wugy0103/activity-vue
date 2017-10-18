@@ -69,7 +69,7 @@ const DxHybrid = {
     }
   },
   /**
-   * app调用h5
+   * ios调用h5
    * @param func 回调函数
    */
   IOSCallH5 (func) {
@@ -79,6 +79,23 @@ const DxHybrid = {
           responseCallback(window[func](data))
         })
       })
+    }
+  },
+  /**
+   * app调用h5
+   * ios调用h5优化
+   * @param func api 名称
+   * @param callback 回调方法
+   */
+  APPCallH5 (func, callback) {
+    if (this.isIOS()) {
+      this.connectWebViewJavascriptBridge(function (bridge) {
+        bridge.registerHandler(func, function (data, responseCallback) {
+          responseCallback(callback(data))
+        })
+      })
+    } else {
+      window[func] = callback
     }
   },
   /**

@@ -55,6 +55,11 @@ html,body{
     background-color: #f1f1f1;
 }
 
+img {
+    vertical-align: top;
+    float: left;
+    width: 100%;
+}
 
 .clear:after{
     content: '';
@@ -117,8 +122,10 @@ html,body{
   line-height: 0.3rem;
 }
 
-img {
-    vertical-align: top;
-    float: left;
-    width: 100%;
+//mint-ui样式修改
+.Toast>span {
+    color: white !important;
+}
+.mint-indicator-spin {
+    display: block !important;
 }

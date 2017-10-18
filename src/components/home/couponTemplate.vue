@@ -5,7 +5,7 @@
   				<img class="pull-left" src="../../images/toutu.png" width="100%" alt="png">
   			</a>
   		</div> -->
-    <singleTemplate></singleTemplate>
+    <singleTemplate :imgSrc="'/static/images/toutu.png'"></singleTemplate>
     <div class="clear">
       <div class="usageBtn">使用规则</div>
     </div>

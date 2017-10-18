@@ -1,6 +1,6 @@
 <template>
   <div>
-    <singleTemplate></singleTemplate>
+    <singleTemplate :imgSrc="'/static/images/toutu.png'"></singleTemplate>
     <div class="productTemplate">
       <ul class="clear">
         <li>
@@ -44,6 +44,7 @@ export default {
 @import '../../style/common';
 .productTemplate {
   width: 100%;
+  overflow: hidden;
   ul {
     margin: 0 -0.025rem;
     li {

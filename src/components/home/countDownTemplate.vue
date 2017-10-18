@@ -3,7 +3,7 @@
     <div class="text">
       — 距离9.15秋上新活动结束还剩 —
     </div>
-    <count-down class="count-down" v-on:start_callback="countDownS_cb('start')" v-on:end_callback="countDownE_cb('end')" :endTime="1508255999" :dayTxt="'天'" :hourTxt="'时'" :minutesTxt="'分'" :secondsTxt="'秒'"></count-down>
+    <count-down class="count-down" v-on:start_callback="countDownS_cb('start')" v-on:end_callback="countDownE_cb('end')" :endTime="1608255999" :dayTxt="'天'" :hourTxt="'时'" :minutesTxt="'分'" :secondsTxt="'秒'"></count-down>
   </div>
 </template>
 <script>

@@ -1,6 +1,6 @@
 <template>
 <div>
-	<singleTemplate></singleTemplate>
+	<singleTemplate :imgSrc="'/static/images/toutu.png'"></singleTemplate>
 	<div class="threeTemplate clear">
         <a href="javascript:;">
             <img src="../../images/header.png" width="100%" alt="header.png">

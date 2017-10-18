@@ -1,11 +1,12 @@
 <template>
 <div class="layout">
-   <singleTemplate></singleTemplate>
+   <singleTemplate :imgSrc="'/static/images/header.png'" :url="'http://m.daxmall.com'"></singleTemplate>
    <countDownTemplate></countDownTemplate>
    <couponTemplate></couponTemplate>
    <bigraphTemplate></bigraphTemplate>
    <threeTemplate></threeTemplate>
    <productTemplate></productTemplate>
+   <iconTemplate></iconTemplate>
  </div>
 </template>
 
@@ -16,6 +17,7 @@
   import bigraphTemplate from '../components/home/bigraphTemplate.vue'
   import threeTemplate from '../components/home/threeTemplate.vue'
   import productTemplate from '../components/home/productTemplate.vue'
+  import iconTemplate from '../components/home/iconTemplate.vue'
   
   export default {
     components: {
@@ -24,7 +26,8 @@
       couponTemplate,
       bigraphTemplate,
       threeTemplate,
-      productTemplate
+      productTemplate,
+      iconTemplate
     }
   }
 </script>

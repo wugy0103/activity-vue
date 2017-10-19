@@ -1,18 +1,14 @@
 <template>
-  <input type="hidden" :value="JSON.stringify(inputShareData)">
+  <input type="hidden" id="shareData" :value="JSON.stringify(inputShareData)">
 </template>
 
-<script>
-// import 'http://res.wx.qq.com/open/js/jweixin-1.0.0.js'
-import { DxHybrid } from '../../utils/hybrid.js'
-// 使用mint-ui
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-import axios from 'axios'
 
+<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
+<script>
+import { DxHybrid } from '../../utils/hybrid.js'
+import axios from 'axios'
 export default {
   components: {
-    MintUI,
     axios
   },
   props: {
@@ -66,27 +62,20 @@ export default {
   },
   methods: {
     getWechatConfig: function (callback) {
-      MintUI.Indicator.open()
       return axios.get('http://192.168.60.11:8184/shopManage/wechatShare', {
         params: { url: location.href }
       }).then((res) => {
         console.log(res.data)
-        MintUI.Indicator.close()
         if (callback) callback(res.data)
         return res.data
       }, (rej) => {
-        console.log(rej)
-        MintUI.Indicator.close()
-        MintUI.Toast({
-          message: '网络繁忙！',
-          className: 'Toast'
-        })
+        console.log('http://192.168.60.11:8184/shopManage/wechatShare', rej)
         return rej
       })
     },
     wechatInit: function (shareData) {
       return this.getWechatConfig(function (config) {
-        var paramObj = {
+        let paramObj = {
           appId: config.appId,
           timestamp: config.timestamp,
           nonceStr: config.noncestr,

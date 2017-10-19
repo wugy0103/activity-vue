@@ -1,5 +1,6 @@
 <template>
   <div class="singleTemplate clear">
+    <img v-if="!!headerPic" :src="headerPic" alt="">
     <a class="clear" :href="url">
       <img :src="imgSrc">
     </a>
@@ -18,6 +19,11 @@ export default {
     url: {
       type: String,
       default: 'javascript:;'
+    },
+    // 头图
+    headerPic: {
+      type: String,
+      default: ''
     }
   }
 }

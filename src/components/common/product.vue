@@ -1,28 +1,51 @@
 <template>
   <div class="product">
-    <a class="prodPic clear" href="javascript:;">
-      <span class="userIcon ellipsis-lin2">8.28七狂欢节</span>
-      <img src="../../images/prodpic.png" alt="">
+    <a class="prodPic clear" :href="'http://192.168.60.11/views/' + product.prodId">
+      <span class="userIcon ellipsis-lin2">{{ product.cornerTag }}</span>
+      <img :src="product.pic">
     </a>
     <div class="prodInfo">
       <a href="javascript:;">
-        <h3 class="ellipsis-lin2">PUMA(彪马)2017新款亮红色休闲跑步鞋</h3>
+        <h3 class="ellipsis-lin2">{{ product.name }}</h3>
       </a>
       <div class="tag clear">
-        <i class="manjian"></i>
-        <i class="tejia"></i>
-        <i class="miaosa"></i>
-        <!-- <i class="userDefined">最多显示7个字</i> -->
+        <i class="userDefined" v-for="(item,index) of wordMarkTag" :key="index">{{ item }}</i>
+        <div v-for="(item,index) of activityTags" :key="index">
+          <i class="manjian" v-if="item===3"></i>
+          <i class="tejia" v-else-if="item.type===2"></i>
+          <i class="miaosa" v-else-if="item.type===1"></i>
+        </div>
       </div>
       <div class="price clear">
-        <span>¥779.00</span>
-        <a class="btn" href="javascript:;">去抢购</a>
+        <span>¥{{ product.cash }}</span>
+        <a class="btn" :href="'http://192.168.60.11/views/' + product.prodId">去抢购</a>
 
       </div>
     </div>
 
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    // 商品集合
+    product: {
+      type: Object,
+      default: {}
+    },
+    computed: {
+      wordMarkTag () {
+        return this.product.wordMarkTag.split(',')
+      },
+      activityTags () {
+        return this.product.activityTags.split(',')
+      }
+    }
+  }
+}
+</script>
+
 <style lang="scss" scoped>
 @import '../../style/common';
 .product {

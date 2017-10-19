@@ -1,38 +1,48 @@
 <template>
-<div>
-	<singleTemplate :imgSrc="'/static/images/toutu.png'"></singleTemplate>
-	<div class="bigraphTemplate clear">
-        <a href="javascript:;">
-            <img src="../../images/header.png" width="100%" alt="header.png">
+  <div>
+    <singleTemplate v-if="!!headerPic" :imgSrc="headerPic"></singleTemplate>
+    <div class="bigraphTemplate clear">
+      <div v-for="item of imgArr" :key="item.id">
+        <a :href="item.picLink">
+          <img :src="item.templatePic" />
         </a>
-		<a href="javascript:;">
-            <img src="../../images/header.png" width="100%" alt="header.png">
-        </a>
-</div>
-	
-	</div>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
-  import singleTemplate from './singleTemplate.vue'
-  export default {
-    components: {
-      singleTemplate
+import singleTemplate from './singleTemplate.vue'
+export default {
+  components: {
+    singleTemplate
+  },
+  props: {
+    // 图片集合
+    imgArr: {
+      type: Array,
+      default: []
+    },
+    // 头图
+    headerPic: {
+      type: String,
+      default: ''
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
 @import '../../style/common';
-	.bigraphTemplate{
-		width: 100%;
-		a {
-			float: left;
-			width: 50%;
-			img {
-				float: left;
-			}
-		}
-	}
-	
+.bigraphTemplate {
+  width: 100%;
+  a {
+    float: left;
+    width: 50%;
+    img {
+      float: left;
+    }
+  }
+}
 </style>

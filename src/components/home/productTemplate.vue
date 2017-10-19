@@ -1,26 +1,11 @@
 <template>
   <div>
-    <singleTemplate :imgSrc="'/static/images/toutu.png'"></singleTemplate>
+    <singleTemplate v-if="!!headerPic" :imgSrc="headerPic"></singleTemplate>
     <div class="productTemplate">
       <ul class="clear">
-        <li>
+        <li v-for="item of prodArr" :key="item.prodId">
           <a href="javascript:;">
-            <product></product>  
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <product></product>  
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <product></product>  
-          </a>
-        </li>
-        <li>
-          <a href="javascript:;">
-            <product></product>  
+            <product :product="item"></product>  
           </a>
         </li>
       </ul>
@@ -36,6 +21,18 @@ export default {
   components: {
     singleTemplate,
     product
+  },
+  props: {
+    // 商品集合
+    prodArr: {
+      type: Array,
+      default: []
+    },
+    // 头图
+    headerPic: {
+      type: String,
+      default: ''
+    }
   }
 }
 </script>

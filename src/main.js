@@ -67,7 +67,7 @@ var store = new Vuex.Store({
           })
         }
       }, (rej) => {
-        console.log(rej)
+        console.log('http://192.168.60.11:8184/acSubject/getSubjectInfoById', rej)
         MintUI.Indicator.close()
         MintUI.Toast({
           message: '网络繁忙！',

@@ -160,7 +160,7 @@ export default {
         this.msTime.show = true
         this.$emit('start_callback', this.msTime.show)
         setTimeout(() => {
-          this.runTime(this.end, this.star, this.end_message, true)
+          this.runTime(this.end, this.current, this.end_message, true)
         }, 1)
       }
     },

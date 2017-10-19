@@ -1,13 +1,24 @@
 <template>
   <div class="layout" :style="styleObj">
-    <singleTemplate :imgSrc="'/static/images/header.png'" :url="'http://m.daxmall.com'"></singleTemplate>
-    <countDownTemplate></countDownTemplate>
-    <couponTemplate></couponTemplate>
-    <bigraphTemplate></bigraphTemplate>
-    <threeTemplate></threeTemplate>
-    <productTemplate></productTemplate>
+    <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link"></share>
+    <div v-for="(item, index) of topic.templateList" :key="item.templateId">
+      <template v-if="item.type===1">
+        <singleTemplate :imgSrc="item.templatePics[0].templatePic" :url="item.templatePics[0].picLink" :headerPic="item.templatePic"></singleTemplate>
+      </template>
+      <template v-else-if="item.type===2">
+        <bigraphTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></bigraphTemplate>
+      </template>
+      <template v-else-if="item.type===3">
+        <productTemplate :prodArr="item.templateProds" :headerPic="item.templatePic"></productTemplate>
+      </template>
+      <template v-else-if="item.type===4">
+        <threeTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></threeTemplate>
+      </template>
+      <template v-else-if="item.type===5">
+        <!-- <couponTemplate :headerPic="item.templatePic"></couponTemplate> -->
+      </template>
+    </div>
     <iconTemplate></iconTemplate>
-    <share></share>
   </div>
 </template>
 
@@ -36,7 +47,8 @@ export default {
     return {
       styleObj: {
         background: '#fff url(' + this.$store.state.topic.backgroundPic + ') repeat-y top left'
-      }
+      },
+      link: window.location.href
     }
   },
   methods: {

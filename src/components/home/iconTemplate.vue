@@ -1,25 +1,41 @@
 <template>
   <div class="iconTemplate clear">
-    <a href="javascript:;">
+    <a :href="btns[0].link">
       <singleTemplate :imgSrc="'/static/images/icon_goHome@2x.png'"></singleTemplate>
     </a>
-    <a href="javascript:;">
+    <a href="javascript:;" @:click="goTop">
       <singleTemplate :imgSrc="'/static/images/icon_totop@2x.png'"></singleTemplate>
     </a>
   </div>
 </template>
 
 <script>
-  import singleTemplate from './singleTemplate.vue'
-  export default {
-    components: {
-      singleTemplate
+import singleTemplate from './singleTemplate.vue'
+export default {
+  components: {
+    singleTemplate
+  },
+  props: {
+    // 商品集合
+    btns: {
+      type: Array,
+      default: [
+        {
+          link: 'http://m.daxmall.com'
+        }
+      ]
+    }
+  },
+  methods: {
+    goTop () {
+      window.scrollTo(0, 0)
     }
   }
+}
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/common';
+@import "../../style/common";
 .iconTemplate {
   position: fixed;
   z-index: 999;

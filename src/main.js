@@ -28,7 +28,22 @@ var store = new Vuex.Store({
   state: {
     // 专题信息
     topic: {
-      backgroundPic: ''
+      backgroundPic: '',
+      btns: [
+        {
+          link: ''
+        }
+      ],
+      templateList: [
+        {
+          templatePic: '',
+          templatePics: [{
+            id: '',
+            picLink: '',
+            templatePic: ''
+          }]
+        }
+      ]
     }
   },
   getters: {

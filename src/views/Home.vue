@@ -3,7 +3,7 @@
     <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
       <template v-if="item.type===1">
-        <singleTemplate :imgSrc="item.templatePics[0].templatePic" :url="item.templatePics[0].picLink" :headerPic="item.templatePic"></singleTemplate>
+        <singleTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></singleTemplate>
       </template>
       <template v-else-if="item.type===2">
         <bigraphTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></bigraphTemplate>
@@ -15,10 +15,10 @@
         <threeTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></threeTemplate>
       </template>
       <template v-else-if="item.type===5">
-        <!-- <couponTemplate :headerPic="item.templatePic"></couponTemplate> -->
+        <couponTemplate :couponArr="item.templateCoupons" :headerPic="item.templatePic"></couponTemplate>
       </template>
     </div>
-    <iconTemplate></iconTemplate>
+    <iconTemplate :btns="topic.btns"></iconTemplate>
   </div>
 </template>
 

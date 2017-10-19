@@ -1,13 +1,8 @@
 <template>
   <div class="couponTemplate">
-    <!-- <div class="header">
-  			<a class="pull-left" href="javascript:;">
-  				<img class="pull-left" src="../../images/toutu.png" width="100%" alt="png">
-  			</a>
-  		</div> -->
-    <singleTemplate :imgSrc="'/static/images/toutu.png'"></singleTemplate>
+    <singleTemplate v-if="!!headerPic" :imgSrc="headerPic"></singleTemplate>
     <div class="clear">
-      <div class="usageBtn">使用规则</div>
+      <div class="usageBtn" @click="introduceAlert">使用规则</div>
     </div>
 
     <ul class="clear">
@@ -54,9 +49,34 @@
 
 <script>
 import singleTemplate from './singleTemplate.vue'
+// 使用mint-ui
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 export default {
   components: {
-    singleTemplate
+    singleTemplate,
+    MintUI
+  },
+  props: {
+    // 图片集合
+    couponArr: {
+      type: Array,
+      default: []
+    },
+    // 头图
+    headerPic: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    introduceAlert () {
+      MintUI.MessageBox({
+        title: '优惠券使用说明',
+        message: '1、每个订单仅可使用一张优惠券；2、优惠券一经使用，不予退还；3、优惠券不可抵扣运费；4、优惠券使用最终解释权归健康商城所有。',
+        confirmButtonText: '我知道了'
+      })
+    }
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="singleTemplate clear">
     <img v-if="!!headerPic" :src="headerPic" alt="">
-    <a class="clear" :href="url">
-      <img :src="imgSrc">
+    <a class="clear" :href="imgArr[0].picLink">
+      <img :src="imgArr[0].templatePic">
     </a>
   </div>
 </template>
@@ -10,15 +10,13 @@
 <script>
 export default {
   props: {
-    // 图片
-    imgSrc: {
-      type: String,
-      default: '/static/images/placeholder.png'
-    },
-    // 链接
-    url: {
-      type: String,
-      default: 'javascript:;'
+    // 图片集合
+    imgArr: {
+      type: Array,
+      default: [{
+        picLink: '',
+        templatePic: ''
+      }]
     },
     // 头图
     headerPic: {

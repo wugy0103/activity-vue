@@ -33,21 +33,21 @@ export default {
     product: {
       type: Object,
       default: {}
+    }
+  },
+  computed: {
+    wordMarkTag () {
+      return this.product.wordMarkTag.split(',')
     },
-    computed: {
-      wordMarkTag () {
-        return this.product.wordMarkTag.split(',')
-      },
-      activityTags () {
-        return this.product.activityTags.split(',')
-      }
+    activityTags () {
+      return this.product.activityTags.split(',')
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/common';
+@import "../../style/common";
 .product {
   width: 100%;
   background-color: #fff;
@@ -67,7 +67,7 @@ export default {
       background-size: 0.384rem 0.432rem;
       font-family: $PingFangStyle;
       font-size: 0.12rem;
-      color: #FFFFFF;
+      color: #ffffff;
       line-height: 0.18rem;
       transform: scale(0.83);
       padding-top: 0.01rem;
@@ -95,15 +95,15 @@ export default {
         margin-bottom: 0.02rem;
         &.manjian {
           width: 0.28rem;
-          background: #FFC0BF;
+          background: #ffc0bf;
           border-radius: 1px;
           position: relative;
           &::after {
-            content: '满减';
+            content: "满减";
             position: absolute;
             font-family: $PingFangStyle;
             font-size: 0.12rem;
-            color: #FF2C29;
+            color: #ff2c29;
             line-height: 0.16rem;
             width: 100%;
             text-align: center;

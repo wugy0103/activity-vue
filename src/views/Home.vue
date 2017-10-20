@@ -2,6 +2,9 @@
   <div class="layout" :style="styleObj">
     <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
+      <template v-if="index===1　&& topic.acitvityCountDown===0">
+        <countDownTemplate :current="current" :endTime="topic.endDate" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
+      </template>
       <template v-if="item.type===1">
         <singleTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></singleTemplate>
       </template>
@@ -15,7 +18,7 @@
         <threeTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></threeTemplate>
       </template>
       <template v-else-if="item.type===5">
-        <couponTemplate :couponArr="item.templateCoupons" :headerPic="item.templatePic"></couponTemplate>
+        <couponTemplate :couponRuleTitle="item.couponRuleTitle" :couponRuleContent="item.couponRuleContent" :couponArr="item.templateCoupons" :headerPic="item.templatePic"></couponTemplate>
       </template>
     </div>
     <iconTemplate :btns="topic.btns"></iconTemplate>
@@ -46,7 +49,7 @@ export default {
   data () {
     return {
       styleObj: {
-        background: '#fff url(' + this.$store.state.topic.backgroundPic + ') repeat-y top left'
+        background: '#fff url(' + this.topic.backgroundPic + ') repeat-y top left'
       },
       link: window.location.href
     }
@@ -54,14 +57,17 @@ export default {
   methods: {
   },
   computed: {
-    // 监听返回不同状态的数据
     topic () {
       return this.$store.state.topic
+    },
+    current () {
+      return this.$store.state.nowDate
     }
 
   },
   mounted () {
     this.$store.dispatch('getTopic', this.$route.params)
+    this.$store.dispatch('getNowDate')
   }
 }
 </script>

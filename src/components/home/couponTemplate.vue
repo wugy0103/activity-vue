@@ -2,7 +2,7 @@
   <div class="couponTemplate">
     <singleTemplate v-if="!!headerPic" :imgSrc="headerPic"></singleTemplate>
     <div class="clear">
-      <div class="usageBtn" @click="introduceAlert">使用规则</div>
+      <div class="usageBtn" @click="introduceAlert()">使用规则</div>
     </div>
 
     <ul class="clear">
@@ -58,6 +58,16 @@ export default {
     MintUI
   },
   props: {
+    // 优惠券规则title
+    couponRuleTitle: {
+      type: String,
+      default: ''
+    },
+    // 优惠券规则content
+    couponRuleContent: {
+      type: String,
+      default: ''
+    },
     // 图片集合
     couponArr: {
       type: Array,
@@ -72,9 +82,10 @@ export default {
   methods: {
     introduceAlert () {
       MintUI.MessageBox({
-        title: '优惠券使用说明',
-        message: '1、每个订单仅可使用一张优惠券；2、优惠券一经使用，不予退还；3、优惠券不可抵扣运费；4、优惠券使用最终解释权归健康商城所有。',
-        confirmButtonText: '我知道了'
+        title: this.couponRuleTitle || '优惠券使用说明',
+        message: this.couponRuleContent || '<p>1、每个订单仅可使用一张优惠券；</p> <p>2、优惠券一经使用，不予退还；</p> <p>3、优惠券不可抵扣运费；</p> <p>4、优惠券使用最终解释权归健康商城所有。</p>',
+        confirmButtonText: '我知道了',
+        confirmButtonClass: 'confirmButtonClass'
       })
     }
   }

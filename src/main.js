@@ -44,7 +44,8 @@ var store = new Vuex.Store({
           }]
         }
       ]
-    }
+    },
+    nowDate: ''
   },
   getters: {
     // 处理state中的数据;
@@ -72,6 +73,94 @@ var store = new Vuex.Store({
         params: data
       }).then((res) => {
         MintUI.Indicator.close()
+        res.data = {
+          'message': '成功',
+          'model': {
+            'acitvityCountDown': 0,
+            'activitySharePic': '/static/images/share.png',
+            'anchorContent': '001,002,003,004,005,006',
+            'anchorLocation': '003',
+            'backgroundPic': '/static/images/bg.png',
+            'backgroundStyle': '测试内容b4yt',
+            'countdownBackgroundPic': '/static/images/countBg.png',
+            'description': '分享描述=================',
+            'endDate': '1508774399',
+            'fontColor': 1,
+            'id': 121,
+            'ifBackground': '测试内容b4yt',
+            'longTitle': '分享标题==========',
+            'publishStatus': '测试内容b4yt',
+            'shareDescription': '测试内容b4yt',
+            'shareTitle': '测试内容94rc',
+            'shortTitle': '专题标题=',
+            'startDate': (new Date()).getTime(),
+            'status': '测试内容01y4',
+            'templateList': [
+              {
+                'subjectId': 121,
+                'templateId': '002',
+                'templatePic': '',
+                'templatePics': [
+                  {
+                    'id': 1,
+                    'picLink': '',
+                    'templatePic': '/static/images/header.png'
+                  }
+                ],
+                'templateProds': [],
+                'type': 1
+              },
+              {
+                'couponRuleContent': '1、每个订单仅可使用一张优惠券；2、优惠券一经使用，不予退还；3、优惠券不可抵扣运费；4、优惠券使用最终解释权归健康商城所有。',
+                'couponRuleTitle': '优惠券使用说明',
+                'isShowName': '测试内容01y4',
+                'subjectId': 121,
+                'templateCoupons': [
+                  {
+                    'activityId': 53,
+                    'couponId': 283,
+                    'couponName': '满1000送100',
+                    'couponScope': '优惠券添加适用类目/品牌范围',
+                    'drawCouponUrl': 'http://192.168.60.11:8082/coupon/getActiveCoupon/283/53',
+                    'fullPrice': 1000,
+                    'getStatus': 1,
+                    'offPrice': 100
+                  },
+                  {
+                    'activityId': 53,
+                    'couponId': 281,
+                    'couponName': '满1000送1001',
+                    'couponScope': '优惠券添加适用类目/品牌范围',
+                    'drawCouponUrl': 'http://192.168.60.11:8082/coupon/getActiveCoupon/281/53',
+                    'fullPrice': 1000,
+                    'getStatus': 1,
+                    'offPrice': 1001
+                  },
+                  {
+                    'activityId': 53,
+                    'couponId': 279,
+                    'couponName': '满1000送1002',
+                    'couponScope': '优惠券添加适用类目/品牌范围',
+                    'drawCouponUrl': 'http://192.168.60.11:8082/coupon/getActiveCoupon/279/53',
+                    'fullPrice': 1000,
+                    'getStatus': 1,
+                    'offPrice': 1002
+                  }
+                ],
+                'templateId': '001',
+                'templateName': '测试内容2rsg',
+                'templatePic': '/static/images/toutu.png',
+                'templatePics': [],
+                'templateProds': [],
+                'templateSort': '测试内容2rsg',
+                'type': 5
+              }
+            ],
+            'wxPreviewPic': '/static/images/wx.png'
+          },
+          'resultCode': 200,
+          'success': true
+        }
         if (res.data.success) {
           state.topic = res.data.model
           document.title = state.topic.shortTitle
@@ -89,12 +178,25 @@ var store = new Vuex.Store({
           className: 'Toast'
         })
       })
+    },
+    // 获取服务器时间
+    getNowDate (state, data) {
+      axios.get('http://192.168.60.11:8184/acSubject/getNowDate', {
+        params: data
+      }).then((res) => {
+        state.nowDate = res.data.model.nowDate
+      }, (rej) => {
+        console.log('http://192.168.60.11:8184/acSubject/getSubjectInfoById', rej)
+      })
     }
   },
   actions: {
     // 列表页数据
     getTopic (context, data) {
       context.commit('getTopic', data)
+    },
+    getNowDate (context, data) {
+      context.commit('getNowDate', data)
     }
   }
 })

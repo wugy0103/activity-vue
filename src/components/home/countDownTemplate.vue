@@ -1,9 +1,9 @@
 <template>
-  <div class="countDownTemplate">
+  <div id="countDownTemplate" class="countDownTemplate" :class="{ backStyle: !fontColor }">
     <div class="text">
-      — 距离9.15秋上新活动结束还剩 —
+      — 距离{{ shortTitle }}活动结束还剩 —
     </div>
-    <count-down class="count-down" v-on:start_callback="countDownS_cb('start')" v-on:end_callback="countDownE_cb('end')" :endTime="1608255999" :dayTxt="'天'" :hourTxt="'时'" :minutesTxt="'分'" :secondsTxt="'秒'"></count-down>
+    <count-down class="count-down" v-on:start_callback="countDownS_cb('start')" v-on:end_callback="countDownE_cb('end')" :current="current" :endTime="endTime" :dayTxt="'天'" :hourTxt="'时'" :minutesTxt="'分'" :secondsTxt="'秒'" :backStyle="fontColor"></count-down>
   </div>
 </template>
 <script>
@@ -12,13 +12,39 @@ export default {
   components: {
     CountDown
   },
+  props: {
+    current: {
+      type: String,
+      default: ''
+    },
+    endTime: {
+      type: String,
+      default: ''
+    },
+    countdownBg: {
+      type: String,
+      default: ''
+    },
+    fontColor: {
+      type: String,
+      default: ''
+    },
+    shortTitle: {
+      type: String,
+      default: ''
+    }
+  },
   methods: {
     countDownS_cb: function (x) {
       console.log(x)
     },
     countDownE_cb: function (x) {
       console.log(x)
+      this.$router.push({ name: 'timeout', params: { type: 2 } })
     }
+  },
+  mounted () {
+    document.getElementById('countDownTemplate').setAttribute('style', 'background: url(' + this.countdownBg + ') repeat left top')
   }
 }
 </script>
@@ -27,7 +53,7 @@ export default {
 @import '../../style/common';
 .countDownTemplate {
   width: 100%;
-  background: $countDownBGC;
+  background: none;
   overflow: hidden;
   text-align: center;
   .text {
@@ -36,6 +62,11 @@ export default {
     color: #FFFFFF;
     line-height: 0.34rem;
     text-align: center;
+  }
+  &.backStyle {
+    .text {
+      color: #464854;
+    }
   }
   
 }

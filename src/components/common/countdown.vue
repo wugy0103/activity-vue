@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ backStyle: !backStyle }">
     <!--<div v-if="msTime.show">
       <b v-if="msTime.day>0">
         <span v-for="(index,item) of splitedTime.day" :key="index">{{item}}</span>
@@ -119,6 +119,10 @@ export default {
     secondsFixed: {
       type: Boolean,
       default: false
+    },
+    backStyle: {
+      type: String,
+      default: ''
     }
   },
   mounted () {
@@ -256,6 +260,15 @@ export default {
       font-family: $PingFangStyle;
       font-size: 0.14rem;
       color: $countDownFontColor;
+    }
+    &.backStyle {
+      span {
+        background: #464854;
+        color: #fff;
+      }
+      i {
+        color: #A2A7BA;
+      }
     }
   }
   

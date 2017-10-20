@@ -129,3 +129,45 @@ img {
 .mint-indicator-spin {
     display: block !important;
 }
+.mint-msgbox {
+    width: 2.65rem;
+    border-radius: 0.04rem;
+    .mint-msgbox-header {
+        height: 0.54rem;
+        padding: 0;
+        background: url(/static/images/bg_couponsInstructions@2x.png) no-repeat center;
+        background-size: 2.65rem 0.54rem;
+        .mint-msgbox-title {
+            line-height: 0.48rem;
+            font-family: $PingFang-SCM-style;
+            font-size: 0.16rem;
+            font-weight: normal;
+            color: #FFFFFF;
+        }
+    }
+    .mint-msgbox-content {
+        border-bottom: 1px dashed #FF2C29;
+        padding:0.1rem 0.15rem 0.15rem;
+        .mint-msgbox-message>p {
+            font-family: $PingFangStyle;
+            font-size: 0.14rem;
+            color: #464854;
+            text-align: left;
+            line-height: 0.25rem;
+        }
+    }
+    
+    
+    .mint-msgbox-btns {
+        height: 0.43rem;
+        .confirmButtonClass {
+            font-family: $PingFangStyle;
+            font-size: 0.14rem;
+            color: #464854;
+            line-height: 0.43rem;
+        }
+    }
+    
+}
+
+

@@ -99,6 +99,7 @@ var store = new Vuex.Store({
               {
                 'subjectId': 121,
                 'templateId': '001',
+                'templateName': '测试内容1',
                 'templatePic': '',
                 'templatePics': [
                   {
@@ -148,7 +149,7 @@ var store = new Vuex.Store({
                   }
                 ],
                 'templateId': '002',
-                'templateName': '测试内容2rsg',
+                'templateName': '测试内容2',
                 'templatePic': '/static/images/toutu.png',
                 'templatePics': [],
                 'templateProds': [],
@@ -158,6 +159,7 @@ var store = new Vuex.Store({
               {
                 'subjectId': 121,
                 'templateId': '003',
+                'templateName': '测试内容3',
                 'templatePic': '/static/images/toutu.png',
                 'templatePics': [
                   {
@@ -177,6 +179,7 @@ var store = new Vuex.Store({
               {
                 'subjectId': 121,
                 'templateId': '004',
+                'templateName': '测试内容4',
                 'templatePic': '/static/images/toutu.png',
                 'templatePics': [
                   {
@@ -201,6 +204,7 @@ var store = new Vuex.Store({
               {
                 'subjectId': 121,
                 'templateId': '005',
+                'templateName': '测试内容5',
                 'templatePic': '/static/images/toutu.png',
                 'templatePics': [],
                 'templateProds': [

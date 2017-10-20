@@ -2,6 +2,7 @@
   <div class="layout" :style="styleObj">
     <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
+      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId" :anchorContent="topic.anchorContent"></navigation>
       <template v-if="index===1　&& topic.acitvityCountDown===0">
         <countDownTemplate :current="current" :endTime="topic.endDate" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
       </template>
@@ -34,6 +35,7 @@ import threeTemplate from '../components/home/threeTemplate.vue'
 import productTemplate from '../components/home/productTemplate.vue'
 import iconTemplate from '../components/home/iconTemplate.vue'
 import share from '../components/common/share.vue'
+import navigation from '../components/home/navigation.vue'
 
 export default {
   components: {
@@ -44,7 +46,8 @@ export default {
     threeTemplate,
     productTemplate,
     iconTemplate,
-    share
+    share,
+    navigation
   },
   data () {
     return {
@@ -68,6 +71,11 @@ export default {
   mounted () {
     this.$store.dispatch('getTopic', this.$route.params)
     this.$store.dispatch('getNowDate')
+    // if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
+    //   this.$router.push({ name: 'timeout', params: { type: 1 } })
+    // } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {
+    //   this.$router.push({ name: 'timeout', params: { type: 2 } })
+    // }
   }
 }
 </script>

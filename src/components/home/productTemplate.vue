@@ -1,6 +1,6 @@
 <template>
   <div>
-    <singleTemplate v-if="!!headerPic" :imgSrc="headerPic"></singleTemplate>
+    <singleTemplate v-if="!!headerPic" :imgArr="[{templatePic: headerPic}]"></singleTemplate>
     <div class="productTemplate">
       <ul class="clear">
         <li v-for="item of prodArr" :key="item.prodId">

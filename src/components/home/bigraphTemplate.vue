@@ -1,6 +1,6 @@
 <template>
   <div>
-    <singleTemplate v-if="!!headerPic" :imgSrc="headerPic"></singleTemplate>
+    <singleTemplate v-if="!!headerPic" :imgArr="[{templatePic: headerPic}]"></singleTemplate>
     <div class="bigraphTemplate clear">
       <div v-for="item of imgArr" :key="item.id">
         <a :href="item.picLink">

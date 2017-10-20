@@ -10,11 +10,11 @@
       </a>
       <div class="tag clear">
         <i class="userDefined" v-for="(item,index) of wordMarkTag" :key="index">{{ item }}</i>
-        <div v-for="(item,index) of activityTags" :key="index">
-          <i class="manjian" v-if="item===3"></i>
-          <i class="tejia" v-else-if="item.type===2"></i>
-          <i class="miaosa" v-else-if="item.type===1"></i>
-        </div>
+        <i v-for="(item,index) of activityTags" :key="index" :class="{
+          manjian: item === '3',
+          tejia: item === '2',
+          miaosa: item === '1',
+        }"></i>
       </div>
       <div class="price clear">
         <span>¥{{ product.cash }}</span>
@@ -85,7 +85,7 @@ export default {
       margin-bottom: 0.1rem;
     }
     .tag {
-      max-height: 0.34rem;
+      height: 0.34rem;
       overflow: hidden;
       margin-bottom: 0.15rem;
       i {

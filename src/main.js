@@ -98,7 +98,7 @@ var store = new Vuex.Store({
             'templateList': [
               {
                 'subjectId': 121,
-                'templateId': '002',
+                'templateId': '001',
                 'templatePic': '',
                 'templatePics': [
                   {
@@ -147,16 +147,117 @@ var store = new Vuex.Store({
                     'offPrice': 1002
                   }
                 ],
-                'templateId': '001',
+                'templateId': '002',
                 'templateName': '测试内容2rsg',
                 'templatePic': '/static/images/toutu.png',
                 'templatePics': [],
                 'templateProds': [],
                 'templateSort': '测试内容2rsg',
                 'type': 5
+              },
+              {
+                'subjectId': 121,
+                'templateId': '003',
+                'templatePic': '/static/images/toutu.png',
+                'templatePics': [
+                  {
+                    'id': 31,
+                    'picLink': 'http://www.baidu.com',
+                    'templatePic': '/static/images/st.png'
+                  },
+                  {
+                    'id': 32,
+                    'picLink': 'http://www.baidu.com',
+                    'templatePic': '/static/images/st.png'
+                  }
+                ],
+                'templateProds': [],
+                'type': 2
+              },
+              {
+                'subjectId': 121,
+                'templateId': '004',
+                'templatePic': '/static/images/toutu.png',
+                'templatePics': [
+                  {
+                    'id': 41,
+                    'picLink': 'http://www.baidu.com',
+                    'templatePic': '/static/images/st.png'
+                  },
+                  {
+                    'id': 42,
+                    'picLink': 'http://www.baidu.com',
+                    'templatePic': '/static/images/st.png'
+                  },
+                  {
+                    'id': 43,
+                    'picLink': 'http://www.baidu.com',
+                    'templatePic': '/static/images/st.png'
+                  }
+                ],
+                'templateProds': [],
+                'type': 4
+              },
+              {
+                'subjectId': 121,
+                'templateId': '005',
+                'templatePic': '/static/images/toutu.png',
+                'templatePics': [],
+                'templateProds': [
+                  {
+                    'activityTags': '1,2,3',
+                    'cash': 100,
+                    'cornerTag': '9月上新哈哈',
+                    'name': '测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3',
+                    'pic': '/static/images/prodpic.png',
+                    'prodId': 87248,
+                    'sort': 58554,
+                    'status': 70111,
+                    'wordMarkTag': '模板下的商品集合'
+                  },
+                  {
+                    'activityTags': '1,2,3',
+                    'cash': 100,
+                    'cornerTag': '9月上新哈哈',
+                    'name': '测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3',
+                    'pic': '/static/images/prodpic.png',
+                    'prodId': 87248,
+                    'sort': 58554,
+                    'status': 70111,
+                    'wordMarkTag': '模板下的商品集合,活动标签,角标'
+                  },
+                  {
+                    'activityTags': '1,2,3',
+                    'cash': 100,
+                    'cornerTag': '9月上新哈哈',
+                    'name': '测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3测试内容32c3',
+                    'pic': '/static/images/prodpic.png',
+                    'prodId': 87248,
+                    'sort': 58554,
+                    'status': 70111,
+                    'wordMarkTag': '模板下的商品集合,活动标签,角标,模板下的商品集合,活动标签,角标'
+                  },
+                  {
+                    'activityTags': '1,2,3',
+                    'cash': 100,
+                    'cornerTag': '9月上新哈哈',
+                    'name': '测试内容32c3测试',
+                    'pic': '/static/images/prodpic.png',
+                    'prodId': 87248,
+                    'sort': 58554,
+                    'status': 70111,
+                    'wordMarkTag': '模板下的商品集合,活动标签,角标'
+                  }
+                ],
+                'type': 3
               }
             ],
-            'wxPreviewPic': '/static/images/wx.png'
+            'wxPreviewPic': '/static/images/wx.png',
+            'btns': [
+              {
+                link: 'http://m.daxmall.com'
+              }
+            ]
           },
           'resultCode': 200,
           'success': true

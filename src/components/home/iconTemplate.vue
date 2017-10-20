@@ -1,10 +1,10 @@
 <template>
   <div class="iconTemplate clear">
     <a :href="btns[0].link">
-      <singleTemplate :imgSrc="'/static/images/icon_goHome@2x.png'"></singleTemplate>
+      <singleTemplate :imgArr="[{templatePic: '/static/images/icon_goHome@2x.png'}]"></singleTemplate>
     </a>
-    <a href="javascript:;" @:click="goTop">
-      <singleTemplate :imgSrc="'/static/images/icon_totop@2x.png'"></singleTemplate>
+    <a href="javascript:;" @click="goTop">
+      <singleTemplate :imgArr="[{templatePic: '/static/images/icon_totop@2x.png'}]"></singleTemplate>
     </a>
   </div>
 </template>

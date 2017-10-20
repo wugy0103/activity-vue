@@ -6,7 +6,7 @@
     </div>
 
     <ul class="clear">
-      <li class="clear" v-for="(item, index) of couponArr" :key="item.couponId" :class="{
+      <li class="clear" v-for="(item, index) of couponArr" :key="item.couponId"  @click="getActiveCoupon(item.getStatus, item.drawCouponUrl)" :class="{
         deactive: item.getStatus === 3,
         one: couponArr.length === 1,
         actived: item.getStatus === 2
@@ -35,10 +35,12 @@ import singleTemplate from './singleTemplate.vue'
 // 使用mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import axios from 'axios'
 export default {
   components: {
     singleTemplate,
-    MintUI
+    MintUI,
+    axios
   },
   props: {
     // 优惠券规则title
@@ -80,6 +82,26 @@ export default {
         confirmButtonText: '我知道了',
         confirmButtonClass: 'confirmButtonClass'
       })
+    },
+    getActiveCoupon (status, url) {
+      if (status === 1) {
+        MintUI.Indicator.open()
+        axios.get(url).then((res) => {
+          console.log(res.data)
+          MintUI.Indicator.close()
+          MintUI.Toast({
+            message: res.data.message || '接口异常！',
+            className: 'Toast'
+          })
+        }, (rej) => {
+          console.log('http://192.168.60.11:8184/shopManage/wechatShare', rej)
+          MintUI.Indicator.close()
+          MintUI.Toast({
+            message: '网络繁忙！',
+            className: 'Toast'
+          })
+        })
+      }
     }
   }
 }

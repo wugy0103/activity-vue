@@ -111,7 +111,7 @@ var store = new Vuex.Store({
                 'type': 1
               },
               {
-                'couponRuleContent': '1、每个订单仅可使用一张优惠券；2、优惠券一经使用，不予退还；3、优惠券不可抵扣运费；4、优惠券使用最终解释权归健康商城所有。',
+                'couponRuleContent': '每个订单仅可使用一张优惠券；/n优惠券一经使用，不予退还；/n优惠券不可抵扣运费；/n优惠券使用最终解释权归健康商城所有。',
                 'couponRuleTitle': '优惠券使用说明',
                 'isShowName': '测试内容01y4',
                 'subjectId': 121,
@@ -133,7 +133,7 @@ var store = new Vuex.Store({
                     'couponScope': '优惠券添加适用类目/品牌范围',
                     'drawCouponUrl': 'http://192.168.60.11:8082/coupon/getActiveCoupon/281/53',
                     'fullPrice': 1000,
-                    'getStatus': 1,
+                    'getStatus': 3,
                     'offPrice': 1001
                   },
                   {
@@ -143,7 +143,7 @@ var store = new Vuex.Store({
                     'couponScope': '优惠券添加适用类目/品牌范围',
                     'drawCouponUrl': 'http://192.168.60.11:8082/coupon/getActiveCoupon/279/53',
                     'fullPrice': 1000,
-                    'getStatus': 1,
+                    'getStatus': 2,
                     'offPrice': 1002
                   }
                 ],

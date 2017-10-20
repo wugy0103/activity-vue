@@ -1,6 +1,6 @@
 @import './variable';
 
-body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select, figure, figcaption{
+body, div, span, header, footer, nav, section, aside, article, ul, ol, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select, figure, figcaption{
     padding: 0;
     margin: 0;
     list-style: none;
@@ -148,12 +148,19 @@ img {
     .mint-msgbox-content {
         border-bottom: 1px dashed #FF2C29;
         padding:0.1rem 0.15rem 0.15rem;
-        .mint-msgbox-message>p {
+        .mint-msgbox-message {
             font-family: $PingFangStyle;
             font-size: 0.14rem;
             color: #464854;
             text-align: left;
             line-height: 0.25rem;
+            ol {
+                padding-left: 0.20rem;
+                li{
+                    list-style-type: decimal !important;
+                }
+            }
+                
         }
     }
     

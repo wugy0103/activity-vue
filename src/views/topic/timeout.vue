@@ -2,8 +2,8 @@
   <div class='timeout'>
       <div class='bg' :style='backgroundImage'></div>
       <p>{{ text }}</p>
-      <div @click='goHome()'>
-        <mainBtn class='btn'></mainBtn>
+      <div class='btn' @click='goHome()'>
+        <mainBtn></mainBtn>
       </div>
   </div>
 </template>

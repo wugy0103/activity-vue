@@ -8,6 +8,7 @@ export default {}
 <style lang="scss" scoped>
 @import "../../style/common";
 a {
+  display: inline-block;
   font-family: $PingFangStyle;
   font-size: 0.16rem;
   color: #ffffff;

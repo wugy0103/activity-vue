@@ -62,14 +62,14 @@ export default {
   },
   methods: {
     getWechatConfig: function (callback) {
-      return axios.get('http://192.168.60.11:8184/shopManage/wechatShare', {
+      return axios.get('http://192.168.60.11:8184/wechat/wechatShare', {
         params: { url: location.href }
       }).then((res) => {
         console.log(res.data)
         if (callback) callback(res.data)
         return res.data
       }, (rej) => {
-        console.log('http://192.168.60.11:8184/shopManage/wechatShare', rej)
+        console.log('http://192.168.60.11:8184/wechat/wechatShare', rej)
         return rej
       })
     },

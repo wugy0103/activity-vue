@@ -22,7 +22,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## 访问
 
-http://topic.daxmall.com/topic/121
+http://activity.daxmall.com/topic/121
 
 121为专题id号
 

@@ -5,6 +5,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from './router'
+import AxiosConfig from './config/axios-config'
+import ipConfig from './config/ipConfig'
+import { topicApis } from './config/apis'
 // rem自适应
 import './config/rem'
 // 加载全局scss
@@ -15,13 +18,11 @@ import 'mint-ui/lib/style.css'
 
 // 设置为 false 以阻止 vue 在启动时生成生产提示。
 Vue.config.productionTip = false
-// 挂载axios在Vue构造器下
-Vue.prototype.$ajax = axios
 
 // 加载各模块
 Vue.use(Vuex)
-
 Vue.use(MintUI)
+Vue.use(AxiosConfig, axios)
 
 // 定义状态管理
 var store = new Vuex.Store({
@@ -47,29 +48,11 @@ var store = new Vuex.Store({
     },
     nowDate: ''
   },
-  getters: {
-    // 处理state中的数据;
-    getState (state) {
-      return state.state
-    },
-    // 处理state中的总数;
-    getSaleTotal (state) {
-      return state.saleTotal
-    },
-    // 处理state中的list数据是否有;
-    getShowList (state) {
-      return state.isShowList
-    },
-    // 处理state中的sfilter数据状态;
-    getStatus (state) {
-      return state.orderStatus
-    }
-  },
   mutations: {
     // 获取专题数据
     getTopic (state, data) {
       MintUI.Indicator.open()
-      axios.get('http://192.168.60.11:8184/acSubject/getSubjectInfoById', {
+      axios.get(ipConfig.apiBaseUrl + topicApis.topicInfo, {
         params: data
       }).then((res) => {
         MintUI.Indicator.close()
@@ -276,7 +259,7 @@ var store = new Vuex.Store({
           })
         }
       }, (rej) => {
-        console.log('http://192.168.60.11:8184/acSubject/getSubjectInfoById', rej)
+        console.log(ipConfig.apiBaseUrl + topicApis.topicInfo, rej)
         MintUI.Indicator.close()
         MintUI.Toast({
           message: '网络繁忙！',
@@ -286,7 +269,7 @@ var store = new Vuex.Store({
     },
     // 获取服务器时间
     getNowDate (state, data) {
-      axios.get('http://192.168.60.11:8184/acSubject/getNowDate', {
+      axios.get(ipConfig.apiBaseUrl + topicApis.serverDate, {
         params: data
       }).then((res) => {
         state.nowDate = res.data.model.nowDate

@@ -11,9 +11,11 @@
 
 <script>
 import singleTemplate from './singleTemplate.vue'
+import ipConfig from '../../config/ipConfig'
 export default {
   components: {
-    singleTemplate
+    singleTemplate,
+    ipConfig
   },
   props: {
     // 商品集合
@@ -21,7 +23,7 @@ export default {
       type: Array,
       default: [
         {
-          link: 'http://m.daxmall.com'
+          link: ipConfig.mShopUrl
         }
       ]
     }

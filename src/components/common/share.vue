@@ -5,8 +5,10 @@
 
 <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
 <script>
-import { DxHybrid } from '../../utils/hybrid.js'
+import { DxHybrid } from '../../utils/hybrid'
 import axios from 'axios'
+import ipConfig from '../../config/ipConfig'
+import { topicApis } from '../../config/apis'
 export default {
   components: {
     axios
@@ -62,14 +64,14 @@ export default {
   },
   methods: {
     getWechatConfig: function (callback) {
-      return axios.get('http://192.168.60.11:8184/wechat/wechatShare', {
+      return axios.get(ipConfig.apiBaseUrl + topicApis.wechatUrl, {
         params: { url: location.href }
       }).then((res) => {
         console.log(res.data)
         if (callback) callback(res.data)
         return res.data
       }, (rej) => {
-        console.log('http://192.168.60.11:8184/wechat/wechatShare', rej)
+        console.log(ipConfig.apiBaseUrl + topicApis.wechatUrl, rej)
         return rej
       })
     },

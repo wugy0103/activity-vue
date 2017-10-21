@@ -68,14 +68,16 @@ export default {
     }
 
   },
-  mounted () {
+  created () {
     this.$store.dispatch('getTopic', this.$route.params)
     this.$store.dispatch('getNowDate')
-    // if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
-    //   this.$router.push({ name: 'timeout', params: { type: 1 } })
-    // } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {
-    //   this.$router.push({ name: 'timeout', params: { type: 2 } })
-    // }
+  },
+  mounted () {
+    if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
+      this.$router.push({ name: 'timeout', params: { type: 1 } })
+    } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {
+      this.$router.push({ name: 'timeout', params: { type: 2 } })
+    }
   }
 }
 </script>

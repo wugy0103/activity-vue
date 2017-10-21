@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <a class="prodPic clear" :href="'http://192.168.60.11/views/' + product.prodId">
+    <a class="prodPic clear" :href="mShopUrl + 'views/' + product.prodId">
       <span class="userIcon ellipsis-lin2">{{ product.cornerTag }}</span>
       <img :src="product.pic">
     </a>
@@ -27,7 +27,16 @@
 </template>
 
 <script>
+import ipConfig from '../../config/ipConfig'
 export default {
+  components: {
+    ipConfig
+  },
+  data () {
+    return {
+      mShopUrl: ipConfig.mShopUrl
+    }
+  },
   props: {
     // 商品集合
     product: {

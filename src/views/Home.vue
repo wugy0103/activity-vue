@@ -1,5 +1,5 @@
 <template>
-  <div class="layout" :style="styleObj">
+  <div class="layout" :style="{ background: topic.backgroundPic }">
     <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
       <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId" :anchorContent="topic.anchorContent"></navigation>
@@ -51,9 +51,6 @@ export default {
   },
   data () {
     return {
-      styleObj: {
-        background: '#fff url(' + this.topic.backgroundPic + ') repeat-y top left'
-      },
       link: window.location.href
     }
   },
@@ -61,7 +58,7 @@ export default {
   },
   computed: {
     topic () {
-      return this.$store.state.topic
+      return this.$store.state.topic || ''
     },
     current () {
       return this.$store.state.nowDate
@@ -73,11 +70,11 @@ export default {
     this.$store.dispatch('getNowDate')
   },
   mounted () {
-    if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
-      this.$router.push({ name: 'timeout', params: { type: 1 } })
-    } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {
-      this.$router.push({ name: 'timeout', params: { type: 2 } })
-    }
+    // if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
+    //   this.$router.push({ name: 'timeout', params: { type: 1 } })
+    // } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {
+    //   this.$router.push({ name: 'timeout', params: { type: 2 } })
+    // }
   }
 }
 </script>

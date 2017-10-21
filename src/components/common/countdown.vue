@@ -121,7 +121,7 @@ export default {
       default: false
     },
     backStyle: {
-      type: String,
+      type: Number,
       default: ''
     }
   },

@@ -67,7 +67,6 @@ export default {
       return axios.get(ipConfig.apiBaseUrl + topicApis.wechatUrl, {
         params: { url: location.href }
       }).then((res) => {
-        console.log(res.data)
         if (callback) callback(res.data)
         return res.data
       }, (rej) => {

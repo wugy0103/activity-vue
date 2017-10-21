@@ -67,7 +67,7 @@ var store = new Vuex.Store({
             'backgroundStyle': '测试内容b4yt',
             'countdownBackgroundPic': '/static/images/countBg.png',
             'description': '分享描述=================',
-            'endDate': '1508774399',
+            'endDate': 1508774399,
             'fontColor': 1,
             'id': 121,
             'ifBackground': '测试内容b4yt',
@@ -105,7 +105,7 @@ var store = new Vuex.Store({
                     'couponId': 283,
                     'couponName': '满1000送100',
                     'couponScope': '优惠券添加适用类目/品牌范围',
-                    'drawCouponUrl': 'http://192.168.60.11:8082/coupon/getActiveCoupon/283/53',
+                    'drawCouponUrl': 'http://192.168.60.11:8184/couponApi/getActiveCoupon/283/53',
                     'fullPrice': 1000,
                     'getStatus': 1,
                     'offPrice': 100
@@ -242,7 +242,7 @@ var store = new Vuex.Store({
             'wxPreviewPic': '/static/images/wx.png',
             'btns': [
               {
-                link: 'http://m.daxmall.com'
+                link: ''
               }
             ]
           },

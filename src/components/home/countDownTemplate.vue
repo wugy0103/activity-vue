@@ -14,11 +14,11 @@ export default {
   },
   props: {
     current: {
-      type: String,
+      type: Number,
       default: ''
     },
     endTime: {
-      type: String,
+      type: Number,
       default: ''
     },
     countdownBg: {
@@ -26,7 +26,7 @@ export default {
       default: ''
     },
     fontColor: {
-      type: String,
+      type: Number,
       default: ''
     },
     shortTitle: {

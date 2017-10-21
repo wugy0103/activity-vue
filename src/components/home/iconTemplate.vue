@@ -1,6 +1,6 @@
 <template>
   <div class="iconTemplate clear">
-    <a :href="btns[0].link">
+    <a :href="btns[0].link || ipConfig.mShopUrl">
       <singleTemplate :imgArr="[{templatePic: '/static/images/icon_goHome@2x.png'}]"></singleTemplate>
     </a>
     <a href="javascript:;" @click="goTop">
@@ -28,10 +28,18 @@ export default {
       ]
     }
   },
+  computed: {
+    ipConfig () {
+      return ipConfig
+    }
+  },
   methods: {
     goTop () {
       window.scrollTo(0, 0)
     }
+  },
+  mounted () {
+    console.log(this.btns)
   }
 }
 </script>

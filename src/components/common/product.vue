@@ -18,7 +18,7 @@
       </div>
       <div class="price clear">
         <span>¥{{ product.cash }}</span>
-        <a class="btn" :href="'http://192.168.60.11/views/' + product.prodId">去抢购</a>
+        <a class="btn" :href="mShopUrl + 'views/' + product.prodId">去抢购</a>
 
       </div>
     </div>

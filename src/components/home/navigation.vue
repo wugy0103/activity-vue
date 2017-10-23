@@ -87,6 +87,7 @@ export default {
       color: #737787;
       line-height: 0.4rem;
       padding-left: 0.1rem;
+      box-sizing: border-box;
       background: #464854;
     }
     ul.anchor>li {

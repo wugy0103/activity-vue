@@ -1,6 +1,6 @@
 <template>
   <div class="layout" :style="{ background: topic.backgroundPic }">
-    <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link"></share>
+    <share :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link" :longPageUrl="longPageUrl" :sharePic="topic.activitySharePic || topic.templateList[0].templatePics[0].templatePic"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
       <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId" :anchorContent="topic.anchorContent"></navigation>
       <template v-if="index===1　&& topic.acitvityCountDown===0">
@@ -51,7 +51,8 @@ export default {
   },
   data () {
     return {
-      link: window.location.href
+      link: window.location.href,
+      longPageUrl: window.location.origin + '/#/share/'
     }
   },
   methods: {
@@ -70,6 +71,9 @@ export default {
     this.$store.dispatch('getNowDate')
   },
   mounted () {
+    console.log(this.$store.state.nowDate)
+    console.log(this.$store.state.startDate)
+    console.log(this.$store.state.endDate)
     // if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
     //   this.$router.push({ name: 'timeout', params: { type: 1 } })
     // } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {

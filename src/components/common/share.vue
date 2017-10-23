@@ -2,7 +2,6 @@
   <input type="hidden" id="shareData" :value="JSON.stringify(inputShareData)">
 </template>
 
-
 <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
 <script>
 import { DxHybrid } from '../../utils/hybrid'
@@ -74,7 +73,7 @@ export default {
         'url': this.link,
         'channel': 7,
         'ext': {
-          'longPageUrl': this.longPageUrl + encodeURIComponent(this.sharePic) + '/' + this.QRCodeBase64
+          'longPageUrl': this.longPageUrl + encodeURIComponent(this.sharePic) + '/' + encodeURIComponent(this.QRCodeBase64)
         }
       },
       QRCodeBase64: '',
@@ -145,23 +144,25 @@ export default {
       }
     },
     appShareInit: function (shareData) {
+      let that = this
       DxHybrid.APPCallH5('notifyTBRightButtonClicked', function () {
-        if (!this.QRCodeBase64) {
+        if (!that.QRCodeBase64) {
           MintUI.Indicator.open()
-          this.waitgetQRCodeBase64 = true
+          that.waitgetQRCodeBase64 = true
           return false
         }
         DxHybrid.H5callApp('mallToShare', shareData, function () { })
       })
     },
     getQRCodeBase64: function (url) {
-      DxHybrid.H5callApp('getQrCode', {content: url}, function (data) {
-        this.QRCodeBase64 = data
+      let that = this
+      DxHybrid.H5callApp('getQrCode', {'content': url}, function (data) {
+        that.QRCodeBase64 = data
       })
     }
   },
   mounted () {
-    this.getQRCodeBase64()
+    this.getQRCodeBase64(this.link)
     this.setAppRightBtn()
     this.appShareInit(this.appShareData)
     this.wechatInit(this.wechatShareData)

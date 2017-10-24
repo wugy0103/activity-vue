@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <a class="prodPic clear" :href="mShopUrl + 'views/' + product.prodId">
-      <span class="userIcon ellipsis-lin2">{{ product.cornerTag }}</span>
+      <span class="userIcon ellipsis-lin2" v-if="!!product.cornerTag">{{ product.cornerTag }}</span>
       <img :src="product.pic">
     </a>
     <div class="prodInfo">
@@ -9,7 +9,7 @@
         <h3 class="ellipsis-lin2">{{ product.name }}</h3>
       </a>
       <div class="tag clear">
-        <i class="userDefined" v-for="(item,index) of wordMarkTag" :key="index">{{ item }}</i>
+        <i class="userDefined" v-if="!!item" v-for="(item,index) of wordMarkTag" :key="index">{{ item }}</i>
         <i v-for="(item,index) of activityTags" :key="index" :class="{
           manjian: item === '3',
           tejia: item === '2',

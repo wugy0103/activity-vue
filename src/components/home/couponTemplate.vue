@@ -66,7 +66,7 @@ export default {
   },
   computed: {
     couponRuleContentOfSplited () {
-      let ruleArr = this.couponRuleContent.split('/n')
+      let ruleArr = !this.couponRuleContent ? ['每个订单仅可使用一张优惠券；', '优惠券一经使用，不予退还；', '优惠券不可抵扣运费；', '优惠券使用最终解释权归健康商城所有。'] : this.couponRuleContent.split('/n')
       let ruleHtml = ''
       for (let i = 0; i < ruleArr.length; i++) {
         ruleHtml += '<li>' + ruleArr[i] + '</li>'
@@ -78,7 +78,7 @@ export default {
     introduceAlert () {
       MintUI.MessageBox({
         title: this.couponRuleTitle || '优惠券使用说明',
-        message: this.couponRuleContentOfSplited || '每个订单仅可使用一张优惠券；/n优惠券一经使用，不予退还；/n优惠券不可抵扣运费；/n优惠券使用最终解释权归健康商城所有。',
+        message: this.couponRuleContentOfSplited,
         confirmButtonText: '我知道了',
         confirmButtonClass: 'confirmButtonClass'
       })

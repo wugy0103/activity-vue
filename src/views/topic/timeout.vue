@@ -10,6 +10,7 @@
 
 <script>
 import mainBtn from '../../components/common/mainBtn'
+import ipConfig from '../../config/ipConfig'
 export default {
   components: {
     mainBtn
@@ -19,29 +20,24 @@ export default {
       backgroundImage: {
         'background-image': 'url(/static/images/bg_star@2x.png)'
       },
-      text: '喵！该网页被猫吃，请检查URL是否正确'
+      text: this.$route.params.error || '喵！该网页被猫吃，请检查URL是否正确'
     }
   },
   methods: {
     goHome () {
-      window.location.href = 'http://m.daxmall.com'
+      window.location.href = ipConfig.mShopUrl
     },
     changeData () {
-      if (this.$route.params.type === '1') {
-        this.text = '活动即将开始，敬请期待~'
-      } else if (this.$route.params.type === '2') {
+      if (this.$route.params.type === '2') {
         this.backgroundImage = {
           'background-image': 'url(/static/images/bg_end@2x.png)'
         }
-        this.text = '活动结束啦，下次早点来哦'
-      } else {
-        this.text = this.$route.params.error || '喵！该网页被猫吃，请检查URL是否正确'
       }
     }
   },
   mounted () {
-    console.log(this.$route.params)
     this.changeData()
+    console.log(this.$route.params)
   }
 }
 </script>

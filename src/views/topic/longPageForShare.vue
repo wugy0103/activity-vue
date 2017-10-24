@@ -21,10 +21,6 @@ export default {
       sharePic: decodeURIComponent(this.$route.params.sharePic),
       QRCodeBase64: decodeURIComponent(this.$route.params.QRCodeBase64)
     }
-  },
-  created () {
-  },
-  mounted () {
   }
 }
 </script>

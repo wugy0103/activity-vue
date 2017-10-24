@@ -1,5 +1,5 @@
 import {
-  auctionApis
+  topicApis
 } from './apis'
 import {
   Toast
@@ -47,7 +47,7 @@ const AxiosConfig = {
           case 417:
             let location = window.location.href
             // 跳转到SSO
-            window.location.href = auctionApis.ssoLoginUrl + '?backurl=' + encodeURIComponent(location)
+            window.location.href = topicApis.ssoLoginUrl + '?backurl=' + encodeURIComponent(location)
             break
           case 500:
             // alert('网络繁忙')
@@ -69,7 +69,7 @@ const AxiosConfig = {
         case 401:
           let location = window.location.href
           // 跳转到SSO
-          window.location.href = auctionApis.ssoLoginUrl + '?backurl=' + encodeURIComponent(location)
+          window.location.href = topicApis.ssoLoginUrl + '?backurl=' + encodeURIComponent(location)
           break
         case 504:
           // alert('请求超时')

@@ -40,7 +40,13 @@ export default {
     },
     countDownE_cb: function (x) {
       console.log(x)
-      this.$router.push({ name: 'timeout', params: { type: 2 } })
+      this.$router.push({
+        name: 'timeout',
+        params: {
+          type: 2,
+          error: '活动结束啦，下次早点来哦'
+        }
+      })
     }
   },
   mounted () {

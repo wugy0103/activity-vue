@@ -10,7 +10,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/topic/timeout/:type?',
+      path: '/topic/timeout/:type?/:error?',
       name: 'timeout',
       component: timeout
     },
@@ -19,7 +19,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/share/:sharePic/:QRCodeBase64',
+      path: '/share/:sharePic/:QRCodeBase64?',
       component: longPageForShare
     },
     {

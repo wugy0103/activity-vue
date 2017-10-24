@@ -52,10 +52,24 @@ export default {
   data () {
     return {
       link: window.location.href,
-      longPageUrl: window.location.origin + '/#/share/'
+      longPageUrl: window.location.origin + '/#/share/',
+      nowDate: this.$store.state.nowDate,
+      endDate: this.$store.state.topic.endDate
     }
   },
-  methods: {
+  watch: {
+    nowDate () {
+      if (!this.endDate) {
+        return false
+      }
+      this.switchRouter()
+    },
+    endDate () {
+      if (!this.nowDate) {
+        return false
+      }
+      this.switchRouter()
+    }
   },
   computed: {
     topic () {
@@ -64,21 +78,33 @@ export default {
     current () {
       return this.$store.state.nowDate
     }
-
+  },
+  methods: {
+    switchRouter () {
+      if (this.nowDate < this.startDate) {
+        this.$router.push({
+          name: 'timeout',
+          params: {
+            type: 1,
+            error: '活动即将开始，敬请期待~'
+          }
+        })
+      } else if (this.nowDate > this.endDate) {
+        this.$router.push({
+          name: 'timeout',
+          params: {
+            type: 2,
+            error: '活动结束啦，下次早点来哦'
+          }
+        })
+      }
+    }
   },
   created () {
     this.$store.dispatch('getTopic', this.$route.params)
     this.$store.dispatch('getNowDate')
   },
   mounted () {
-    console.log(this.$store.state.nowDate)
-    console.log(this.$store.state.startDate)
-    console.log(this.$store.state.endDate)
-    // if (this.$store.state.nowDate < this.$store.state.topic.startDate) {
-    //   this.$router.push({ name: 'timeout', params: { type: 1 } })
-    // } else if (this.$store.state.nowDate > this.$store.state.topic.endDate) {
-    //   this.$router.push({ name: 'timeout', params: { type: 2 } })
-    // }
   }
 }
 </script>

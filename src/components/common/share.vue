@@ -8,13 +8,10 @@ import { DxHybrid } from '../../utils/hybrid'
 import axios from 'axios'
 import ipConfig from '../../config/ipConfig'
 import { topicApis } from '../../config/apis'
-// 使用mint-ui
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
+
 export default {
   components: {
-    axios,
-    MintUI
+    axios
   },
   props: {
     // 分享标题
@@ -65,8 +62,13 @@ export default {
         link: this.link,
         imgUrl: this.imgUrl
       },
-      // app分享参数
-      appShareData: {
+      QRCodeBase64: ''
+    }
+  },
+  computed: {
+    // app分享参数
+    appShareData () {
+      return {
         'title': this.title,
         'des': this.desc,
         'imgUrl': this.imgUrl,
@@ -75,17 +77,13 @@ export default {
         'ext': {
           'longPageUrl': this.longPageUrl + encodeURIComponent(this.sharePic) + '/' + encodeURIComponent(this.QRCodeBase64)
         }
-      },
-      QRCodeBase64: '',
-      waitgetQRCodeBase64: false
+      }
     }
   },
   watch: {
     QRCodeBase64 (newval, oldval) {
-      if (this.waitgetQRCodeBase64) {
-        MintUI.Indicator.close()
-        DxHybrid.H5callApp('mallToShare', this.appShareData, function () { })
-      }
+      this.setAppRightBtn()
+      this.appShareInit(this.appShareData)
     }
   },
   methods: {
@@ -144,13 +142,7 @@ export default {
       }
     },
     appShareInit: function (shareData) {
-      let that = this
       DxHybrid.APPCallH5('notifyTBRightButtonClicked', function () {
-        if (!that.QRCodeBase64) {
-          MintUI.Indicator.open()
-          that.waitgetQRCodeBase64 = true
-          return false
-        }
         DxHybrid.H5callApp('mallToShare', shareData, function () { })
       })
     },
@@ -163,8 +155,6 @@ export default {
   },
   mounted () {
     this.getQRCodeBase64(this.link)
-    this.setAppRightBtn()
-    this.appShareInit(this.appShareData)
     this.wechatInit(this.wechatShareData)
   }
 }

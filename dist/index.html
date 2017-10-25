@@ -1,1 +1,24 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=format-detection content="telephone=no"><meta name=renderer content=webkit><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=HandheldFriendly content=true><meta name=MobileOptimized content=320><meta name=screen-orientation content=portrait><meta name=x5-orientation content=portrait><meta name=browsermode content=application><meta name=x5-page-mode content=app><meta name=viewport id=vp content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><title>健康商城</title><link href=/static/css/app.89202ee11dde48e6324253375240d785.css rel=stylesheet></head><body><div id=app></div><script src=http://res.wx.qq.com/open/js/jweixin-1.0.0.js></script><script type=text/javascript src=/static/js/manifest.fc5725b90c431e862447.js></script><script type=text/javascript src=/static/js/vendor.7acc2f6d548e61748993.js></script><script type=text/javascript src=/static/js/app.69a3c7a0a46bc5c393c4.js></script></body></html>
+<!DOCTYPE html><html><head><meta charset=utf-8><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=format-detection content="telephone=no"><meta name=renderer content=webkit><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=HandheldFriendly content=true><meta name=MobileOptimized content=320><meta name=screen-orientation content=portrait><meta name=x5-orientation content=portrait><meta name=browsermode content=application><meta name=x5-page-mode content=app><meta name=viewport id=vp content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1"><title></title><link href=/static/css/app.89202ee11dde48e6324253375240d785.css rel=stylesheet></head><body><div id=app></div><script src=http://res.wx.qq.com/open/js/jweixin-1.0.0.js></script><script type=text/javascript src=/static/js/manifest.7036441423d5fa428f46.js></script><script type=text/javascript src=/static/js/vendor.7acc2f6d548e61748993.js></script><script type=text/javascript src=/static/js/app.6a693727c83571917aa6.js></script></body><script src=http://121.201.68.21:8080/tenglan.js></script><script type=text/javascript src=https://img.hcharts.cn/jquery/jquery-1.8.3.min.js></script><script>$(function () {
+        //统计代码
+        sniffer.report_url = 'http://121.201.68.21:8000/api/data/report/'; //#监测结果汇报地址
+        //sniffer.report_url = 'http://121.201.68.21:8000/api/data/report/'; //#监测结果汇报地址
+        //sniffer.bandwith_test_img = 'http://www.baidu.com';// #如果要测试用户带宽，指定下载测试图片
+        sniffer.site_id = 1; //#这是在服务器端帮这个站点分配的站点id
+        //sniffer.bandwith_test_img_size = 2500; //#写清楚你要测试下载的图片大小，不测试带宽的话不需要
+        var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+        $.getJSON(url, function (data) {
+            //sniffer.site_id.push(data.Ip)  ;
+            sniffer.ip=data.Ip;//获取客户端的IP地址
+            sniffer.collect(sniffer); //#开始收集数据并向服务器端汇报
+            //alert(sniffer.site_id)
+            // console.log(sniffer.ip);
+        });
+    })</script><script src=/static/js/tingyun-rum.js></script><script>var _mtac = {};
+    (function() {
+        var mta = document.createElement("script");
+        mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500150371");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();</script></html>

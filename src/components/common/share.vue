@@ -143,6 +143,7 @@ export default {
     },
     appShareInit: function (shareData) {
       DxHybrid.APPCallH5('notifyTBRightButtonClicked', function () {
+        alert(shareData)
         DxHybrid.H5callApp('mallToShare', shareData, function () { })
       })
     },

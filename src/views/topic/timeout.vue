@@ -37,7 +37,7 @@ export default {
   },
   mounted () {
     this.changeData()
-    console.log(this.$route.params)
+    alert(window.location.href)
   }
 }
 </script>

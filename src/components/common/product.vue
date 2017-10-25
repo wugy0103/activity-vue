@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <a class="prodPic clear" :href="mShopUrl + 'views/' + product.prodId">
-      <span class="userIcon ellipsis-lin2" v-if="!!product.cornerTag">{{ product.cornerTag }}</span>
+      <span class="userIcon ellipsis-lin2" v-if="!!product.corner">{{ product.corner }}</span>
       <img :src="product.pic">
     </a>
     <div class="prodInfo">

@@ -3,7 +3,7 @@
     <share v-if="topic.shareTitle" :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link" :longPageUrl="longPageUrl" :sharePic="topic.activitySharePic || topic.templateList[0].templatePics[0].templatePic || '/static/images/share.png'"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
       <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId" :anchorContent="topic.anchorContent"></navigation>
-      <template v-if="index===1　&& topic.acitvityCountDown===0">
+      <template v-if="index===1　&& topic.acitvityCountDown==='0'">
         <countDownTemplate :current="current" :endTime="topic.endDate" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
       </template>
       <template v-if="item.type===1">

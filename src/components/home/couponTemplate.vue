@@ -6,7 +6,7 @@
     </div>
 
     <ul class="clear">
-      <li class="clear" v-for="(item, index) of couponArr" :key="item.couponId"  @click="getActiveCoupon(item.getStatus, item.drawCouponUrl)" :class="{
+      <li class="clear" v-for="(item, index) of couponArr" :key="item.couponId"  @click="getActiveCoupon(item.getStatus, item.drawCouponUrl, index)" :class="{
         deactive: item.getStatus === 3,
         one: couponArr.length === 1,
         actived: item.getStatus === 2
@@ -14,7 +14,7 @@
         <div class="pull-left">
           <div class="price">¥<b>{{ item.offPrice }}</b>
           </div>
-          <i class="usage">{{ item.couponName }}</i>
+          <i class="usage ellipsis-lin2">{{ item.couponName }}</i>
           <span class="info ellipsis">{{ item.couponScope }}</span>
         </div>
         <a class="pull-right" href="javascript:;"></a>
@@ -83,12 +83,15 @@ export default {
         confirmButtonClass: 'confirmButtonClass'
       })
     },
-    getActiveCoupon (status, url) {
+    getActiveCoupon (status, url, index) {
       if (status === 1) {
         MintUI.Indicator.open()
         axios.get(url).then((res) => {
           console.log(res.data)
           MintUI.Indicator.close()
+          if (res.data.success) {
+            this.couponArr[index].getStatus = 2
+          }
           MintUI.Toast({
             message: res.data.message || '接口异常！',
             className: 'Toast'
@@ -156,9 +159,9 @@ export default {
           font-size: 0.12rem;
           transform: scale(0.83);
           color: #464854;
-          line-height: 0.1rem;
-          display: block;
-          margin-top: 0.05rem;
+          line-height: 0.12rem;
+          height: 0.24rem;
+          margin-top: 0.03rem;
           margin-left: 0.03rem;
           width: 100%;
         }
@@ -167,7 +170,7 @@ export default {
           font-size: 0.12rem;
           transform: scale(0.83);
           color: #737787;
-          margin-top: 0.15rem;
+          // margin-top: 0.15rem;
           margin-left: 0.03rem;
           display: block;
           width: 100%;

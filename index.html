@@ -26,13 +26,48 @@
   <meta name="x5-page-mode" content="app">
   <!-- 适应移动端end -->
   <meta name="viewport" id="vp" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>健康商城</title>
+  <title></title>
 </head>
 
 <body>
   <div id="app"></div>
   <!-- built files will be auto injected -->
+  <!-- 微信分享文件 -->
   <script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
 </body>
-
+<!-- 蒋文辉监听文件 -->
+<script src="http://121.201.68.21:8080/tenglan.js"></script>
+<script type="text/javascript" src="https://img.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+<script>
+    $(function () {
+        //统计代码
+        sniffer.report_url = 'http://121.201.68.21:8000/api/data/report/'; //#监测结果汇报地址
+        //sniffer.report_url = 'http://121.201.68.21:8000/api/data/report/'; //#监测结果汇报地址
+        //sniffer.bandwith_test_img = 'http://www.baidu.com';// #如果要测试用户带宽，指定下载测试图片
+        sniffer.site_id = 1; //#这是在服务器端帮这个站点分配的站点id
+        //sniffer.bandwith_test_img_size = 2500; //#写清楚你要测试下载的图片大小，不测试带宽的话不需要
+        var url = 'http://chaxun.1616.net/s.php?type=ip&output=json&callback=?&_=' + Math.random();
+        $.getJSON(url, function (data) {
+            //sniffer.site_id.push(data.Ip)  ;
+            sniffer.ip=data.Ip;//获取客户端的IP地址
+            sniffer.collect(sniffer); //#开始收集数据并向服务器端汇报
+            //alert(sniffer.site_id)
+            // console.log(sniffer.ip);
+        });
+    })
+</script>
+<!-- 听云监听文件 -->
+<script src="/static/js/tingyun-rum.js"></script>
+<!-- 腾讯云监听文件 -->
+<script>
+    var _mtac = {};
+    (function() {
+        var mta = document.createElement("script");
+        mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.4";
+        mta.setAttribute("name", "MTAH5");
+        mta.setAttribute("sid", "500150371");
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(mta, s);
+    })();
+</script>
 </html>

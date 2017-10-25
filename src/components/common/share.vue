@@ -2,7 +2,6 @@
   <input type="hidden" id="shareData" :value="JSON.stringify(inputShareData)">
 </template>
 
-<script src='http://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
 <script>
 import { DxHybrid } from '../../utils/hybrid'
 import axios from 'axios'
@@ -143,7 +142,7 @@ export default {
     },
     appShareInit: function (shareData) {
       DxHybrid.APPCallH5('notifyTBRightButtonClicked', function () {
-        alert(shareData)
+        alert(JSON.stringify(shareData))
         DxHybrid.H5callApp('mallToShare', shareData, function () { })
       })
     },

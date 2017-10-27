@@ -27,7 +27,7 @@ const AxiosConfig = {
       // Do something before request is sent
       // 添加Ucenter登录验证
       let uumsUsername = self.getParameter('ucenter_username')
-      let uumsCode = self.getParameter('ucenter_code')
+      let uumsCode = self.getParameter('accessToken')
       let url = config.url
       if (uumsCode && uumsUsername) {
         url += '?ucenter_code=' + uumsCode + '&ucenter_username=' + uumsUsername

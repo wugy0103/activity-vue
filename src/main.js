@@ -45,8 +45,7 @@ var store = new Vuex.Store({
           }]
         }
       ]
-    },
-    nowDate: ''
+    }
   },
   mutations: {
     // 获取专题数据

@@ -90,7 +90,7 @@ export default {
           console.log(res.data)
           MintUI.Indicator.close()
           if (res.data.success) {
-            this.couponArr[index].getStatus = 2
+            this.couponArr[index].getStatus = res.data.model.getStatus
           }
           MintUI.Toast({
             message: res.data.message || '接口异常！',

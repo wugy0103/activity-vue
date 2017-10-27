@@ -4,7 +4,7 @@
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
       <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId" :anchorContent="topic.anchorContent"></navigation>
       <template v-if="index===1　&& topic.acitvityCountDown==='0'">
-        <countDownTemplate :current="current" :endTime="topic.endDate" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
+        <countDownTemplate v-if="topic.currDate" :current="topic.currDate" :endTime="topic.endDateStr" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
       </template>
       <template v-if="item.type===1">
         <singleTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></singleTemplate>
@@ -52,22 +52,12 @@ export default {
   data () {
     return {
       link: window.location.href,
-      longPageUrl: window.location.origin + '/#/share/',
-      nowDate: this.$store.state.nowDate,
-      endDate: this.$store.state.topic.endDate
+      longPageUrl: window.location.origin + '/#/share/'
     }
   },
   watch: {
-    nowDate () {
-      if (!this.endDate) {
-        return false
-      }
-      this.switchRouter()
-    },
-    endDate () {
-      if (!this.nowDate) {
-        return false
-      }
+    current () {
+      debugger
       this.switchRouter()
     }
   },
@@ -76,12 +66,18 @@ export default {
       return this.$store.state.topic || ''
     },
     current () {
-      return this.$store.state.nowDate
+      return this.$store.state.topic.currDate
+    },
+    startDate () {
+      return this.$store.state.topic.startDateStr
+    },
+    endDate () {
+      return this.$store.state.topic.endDateStr
     }
   },
   methods: {
     switchRouter () {
-      if (this.nowDate < this.startDate) {
+      if (this.current < this.startDate) {
         this.$router.push({
           name: 'timeout',
           params: {
@@ -89,7 +85,7 @@ export default {
             error: '活动即将开始，敬请期待~'
           }
         })
-      } else if (this.nowDate > this.endDate) {
+      } else if (this.current > this.endDate) {
         this.$router.push({
           name: 'timeout',
           params: {
@@ -102,7 +98,7 @@ export default {
   },
   created () {
     this.$store.dispatch('getTopic', this.$route.params)
-    this.$store.dispatch('getNowDate')
+    // this.$store.dispatch('getNowDate')
   },
   mounted () {
   }

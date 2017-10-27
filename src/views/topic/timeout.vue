@@ -37,7 +37,6 @@ export default {
   },
   mounted () {
     this.changeData()
-    alert(window.location.href)
   }
 }
 </script>

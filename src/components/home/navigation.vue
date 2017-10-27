@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation" :class="{ active: showFlag === true}">
+  <div class="navigation" :class="{ active: showFlag === true, fixed: fixed === true}">
     <ul class="clear anchor">
         <li v-for="(item, index) of anchorContentOfSplited" :class="{ active: index === 0}" :key="item" @click="activeLi(item,index)">{{ item }}</li>
     </ul>
@@ -16,7 +16,8 @@
 export default {
   data () {
     return {
-      showFlag: false
+      showFlag: false,
+      fixed: false
     }
   },
   props: {
@@ -36,13 +37,16 @@ export default {
       this.showFlag = !this.showFlag
     },
     activeLi (mid, index) {
+      // 样式处理
       this.removeClass(document.querySelector('.anchor li.active'), 'active')
       this.removeClass(document.querySelector('.anchorContent li.active'), 'active')
       this.addClass(document.querySelectorAll('.anchor li')[index], 'active')
       this.addClass(document.querySelectorAll('.anchorContent li')[index], 'active')
+      this.fixed = true
+      this.scrollToModel()
     },
     scrollToModel (mid) {
-      // document.body.scrollTop = self.scrollTop + speed;
+      this.scroll().top = document.querySelector('#' + mid).offsetTop
     },
     hasClass (elem, cls) {
       cls = cls || ''
@@ -62,6 +66,24 @@ export default {
           newClass = newClass.replace(' ' + cls + ' ', ' ')
         }
         elem.className = newClass.replace(/^\s+|\s+$/g, '')
+      }
+    },
+    scroll () {
+      if (window.pageYOffset !== undefined) {
+        return {
+          top: window.pageYOffset,
+          left: window.pageXOffset
+        }
+      } else if (document.compatMode === 'CSS1Compat') {
+        return {
+          top: document.documentElement.scrollTop,
+          left: document.documentElement.scrollLeft
+        }
+      } else {
+        return {
+          top: document.body.scrollTop,
+          left: document.body.scrollLeft
+        }
       }
     }
   }
@@ -89,6 +111,11 @@ export default {
       padding-left: 0.1rem;
       box-sizing: border-box;
       background: #464854;
+    }
+    &.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
     }
     ul.anchor>li {
         float: left;

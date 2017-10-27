@@ -2,24 +2,24 @@
   <div class="layout" :style="{ background: 'url('+topic.backgroundPic+') repeat top left' }">
     <share v-if="topic.shareTitle" :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link" :longPageUrl="longPageUrl" :sharePic="topic.activitySharePic || (topic.templateList[0].templatePics[0] && topic.templateList[0].templatePics[0].templatePic) || '/static/images/share.png'"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
-      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId" :anchorContent="topic.anchorContent"></navigation>
+      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId.toString()" :anchorContent="topic.anchorContent"></navigation>
       <template v-if="index===1　&& topic.acitvityCountDown==='0'">
         <countDownTemplate v-if="topic.currDate" :current="topic.currDate" :endTime="topic.endDateStr" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
       </template>
       <template v-if="item.type===1">
-        <singleTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></singleTemplate>
+        <singleTemplate :imgArr="item.templatePics" :headerPic="item.templatePic" :id="item.templateId"></singleTemplate>
       </template>
       <template v-else-if="item.type===2">
-        <bigraphTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></bigraphTemplate>
+        <bigraphTemplate :imgArr="item.templatePics" :headerPic="item.templatePic" :id="item.templateId"></bigraphTemplate>
       </template>
       <template v-else-if="item.type===3">
-        <productTemplate :prodArr="item.templateProds" :headerPic="item.templatePic"></productTemplate>
+        <productTemplate :prodArr="item.templateProds" :headerPic="item.templatePic" :id="item.templateId"></productTemplate>
       </template>
       <template v-else-if="item.type===4">
-        <threeTemplate :imgArr="item.templatePics" :headerPic="item.templatePic"></threeTemplate>
+        <threeTemplate :imgArr="item.templatePics" :headerPic="item.templatePic" :id="item.templateId"></threeTemplate>
       </template>
       <template v-else-if="item.type===5">
-        <couponTemplate :couponRuleTitle="item.couponRuleTitle" :couponRuleContent="item.couponRuleContent" :couponArr="item.templateCoupons" :headerPic="item.templatePic"></couponTemplate>
+        <couponTemplate :couponRuleTitle="item.couponRuleTitle" :couponRuleContent="item.couponRuleContent" :couponArr="item.templateCoupons" :headerPic="item.templatePic" :id="item.templateId"></couponTemplate>
       </template>
     </div>
     <iconTemplate :btns="topic.btns"></iconTemplate>
@@ -116,5 +116,6 @@ export default {
   min-width: 300px;
   margin: 0 auto;
   background: $backgroundColor;
+  position: relative;
 }
 </style>

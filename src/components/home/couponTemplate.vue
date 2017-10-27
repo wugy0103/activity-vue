@@ -1,5 +1,5 @@
 <template>
-  <div class="couponTemplate">
+  <div :id="id" class="couponTemplate">
     <singleTemplate v-if="!!headerPic" :imgArr="[{templatePic: headerPic}]"></singleTemplate>
     <div class="clear">
       <div class="usageBtn" @click="introduceAlert()">使用规则</div>
@@ -61,6 +61,10 @@ export default {
     // 头图
     headerPic: {
       type: String,
+      default: ''
+    },
+    id: {
+      type: Number,
       default: ''
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <div :class="{ backStyle: !backStyle }">
+  <div :class="{ backStyle: backStyle==='0' }">
     <!--<div v-if="msTime.show">
       <b v-if="msTime.day>0">
         <span v-for="(index,item) of splitedTime.day" :key="index">{{item}}</span>
@@ -121,7 +121,7 @@ export default {
       default: false
     },
     backStyle: {
-      type: Number,
+      type: String,
       default: ''
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <div id="countDownTemplate" class="countDownTemplate" :class="{ backStyle: !fontColor }">
+  <div :id="id" class="countDownTemplate" :class="{ backStyle: fontColor==='0' }">
     <div class="text">
       — 距离{{ shortTitle }}活动结束还剩 —
     </div>
@@ -26,11 +26,15 @@ export default {
       default: ''
     },
     fontColor: {
-      type: Number,
+      type: String,
       default: ''
     },
     shortTitle: {
       type: String,
+      default: ''
+    },
+    id: {
+      type: Number,
       default: ''
     }
   },

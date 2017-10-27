@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :id="id">
     <singleTemplate v-if="!!headerPic" :imgArr="[{templatePic: headerPic}]"></singleTemplate>
     <div class="bigraphTemplate clear">
       <div v-for="item of imgArr" :key="item.id">
@@ -27,6 +27,10 @@ export default {
     // 头图
     headerPic: {
       type: String,
+      default: ''
+    },
+    id: {
+      type: Number,
       default: ''
     }
   }

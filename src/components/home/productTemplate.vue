@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :id="id">
     <singleTemplate v-if="!!headerPic" :imgArr="[{templatePic: headerPic}]"></singleTemplate>
     <div class="productTemplate">
       <ul class="clear">
@@ -31,6 +31,10 @@ export default {
     // 头图
     headerPic: {
       type: String,
+      default: ''
+    },
+    id: {
+      type: Number,
       default: ''
     }
   }

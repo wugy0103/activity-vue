@@ -2,13 +2,13 @@
   <div class="navigation" :class="{ active: showFlag === true, fixed: fixed === true}">
     <div style="overflow:hidden;">
       <ul class="clear anchor">
-        <li v-for="(item, index) of anchorContentList" :class="{ active: index === 0}" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
+        <li v-for="(item, index) of anchorContentList" :class="{ active: item.templateId === anchorLocation }" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
     </ul>
     </div>
     <a href="javascript:;" @click="switchanchorContent()" :class="{ active: showFlag === true}"></a>
     <transition name="slide-fade">
       <ul class="clear anchorContent" v-show="showFlag">
-        <li v-for="(item, index) of anchorContentList" :class="{ active: index === 0}" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
+        <li class="ellipsis" v-for="(item, index) of anchorContentList" :class="{ active: item.templateId === anchorLocation }" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
       </ul>
     </transition>
   </div>
@@ -28,6 +28,10 @@ export default {
     anchorContentList: {
       type: Array,
       default: []
+    },
+    anchorLocation: {
+      type: String,
+      default: ''
     }
   },
   methods: {
@@ -42,14 +46,11 @@ export default {
       this.addClass(document.querySelectorAll('.anchorContent li')[index], 'active')
       this.fixed = true
       this.click += 1
-      let navHeight = this.click > 1 ? 40 : 80
+      let rem = document.documentElement.style.fontSize.split('px')[0]
+      let navHeight = this.click > 1 ? 0.4 * rem : 2 * 0.4 * rem
       this.scrollToModel(mid, navHeight)
     },
     scrollToModel (mid, navHeight) {
-      console.log(document.getElementById(mid).offsetTop)
-      // let a = document.getElementById(mid).offsetTop
-      // let c = document.documentElement.getBoundingClientRect().width
-      // let b = a - 0.4 * c / 3.75
       window.scrollTo(0, document.getElementById(mid).offsetTop - navHeight)
     },
     hasClass (elem, cls) {
@@ -71,24 +72,6 @@ export default {
         }
         elem.className = newClass.replace(/^\s+|\s+$/g, '')
       }
-    },
-    scroll () {
-      if (window.pageYOffset !== undefined) {
-        return {
-          top: window.pageYOffset,
-          left: window.pageXOffset
-        }
-      } else if (document.compatMode === 'CSS1Compat') {
-        return {
-          top: document.documentElement.scrollTop,
-          left: document.documentElement.scrollLeft
-        }
-      } else {
-        return {
-          top: document.body.scrollTop,
-          left: document.body.scrollLeft
-        }
-      }
     }
   },
   mounted () {
@@ -98,8 +81,7 @@ export default {
         that.fixed = true
         that.click = 1
       }
-      let firstTid = that.anchorContentList[0].templateId
-      if (document.body.scrollTop <= document.getElementById(firstTid).offsetTop) {
+      if (document.body.scrollTop <= document.getElementById(that.anchorLocation).offsetTop) {
         that.fixed = false
         that.click = 0
       }
@@ -134,6 +116,7 @@ export default {
       position: fixed;
       top: 0;
       left: 0;
+      z-index: 10;
     }
     ul.anchor {
       height: 0.4rem;

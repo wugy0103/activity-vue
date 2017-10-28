@@ -5,7 +5,7 @@
       <template v-if="index===1　&& topic.acitvityCountDown==='0'">
         <countDownTemplate v-if="topic.currDate" :current="topic.currDate" :endTime="topic.endDateStr" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
       </template>
-      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId.toString()" :anchorContentList="topic.anchorContentList"></navigation>
+      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId.toString()" :anchorLocation="topic.anchorLocation" :anchorContentList="topic.anchorContentList"></navigation>
       <template v-if="item.type===1">
         <singleTemplate :imgArr="item.templatePics" :headerPic="item.templatePic" :id="item.templateId"></singleTemplate>
       </template>
@@ -80,7 +80,7 @@ export default {
       console.log(this.startDate)
       console.log(this.endDate)
       if (this.current < this.startDate) {
-        this.$router.push({
+        this.$router.replace({
           name: 'timeout',
           params: {
             type: 1,
@@ -88,7 +88,7 @@ export default {
           }
         })
       } else if (this.current > this.endDate) {
-        this.$router.push({
+        this.$router.replace({
           name: 'timeout',
           params: {
             type: 2,

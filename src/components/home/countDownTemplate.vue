@@ -44,7 +44,7 @@ export default {
     },
     countDownE_cb: function (x) {
       console.log(x)
-      this.$router.push({
+      this.$router.replace({
         name: 'timeout',
         params: {
           type: 2,

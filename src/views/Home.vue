@@ -2,7 +2,7 @@
   <div class="layout" :style="{ background: 'url('+topic.backgroundPic+') repeat top left' }">
     <share v-if="topic.shareTitle" :title="topic.shareTitle" :desc="topic.shareDescription" :imgUrl="topic.wxPreviewPic" :link="link" :longPageUrl="longPageUrl" :sharePic="topic.activitySharePic || (topic.templateList[0].templatePics[0] && topic.templateList[0].templatePics[0].templatePic) || '/static/images/share.png'"></share>
     <div v-for="(item, index) of topic.templateList" :key="item.templateId">
-      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId.toString()" :anchorContent="topic.anchorContent"></navigation>
+      <navigation v-if="!!topic.anchorLocation && topic.anchorLocation === item.templateId.toString()" :anchorContentList="topic.anchorContentList"></navigation>
       <template v-if="index===1　&& topic.acitvityCountDown==='0'">
         <countDownTemplate v-if="topic.currDate" :current="topic.currDate" :endTime="topic.endDateStr" :countdownBg="topic.countdownBackgroundPic" :fontColor="topic.fontColor" :shortTitle="topic.shortTitle"></countDownTemplate>
       </template>
@@ -116,6 +116,6 @@ export default {
   min-width: 300px;
   margin: 0 auto;
   background: $backgroundColor;
-  position: relative;
+  // position: relative;
 }
 </style>

@@ -1,12 +1,14 @@
 <template>
   <div class="navigation" :class="{ active: showFlag === true, fixed: fixed === true}">
-    <ul class="clear anchor">
-        <li v-for="(item, index) of anchorContentOfSplited" :class="{ active: index === 0}" :key="item" @click="activeLi(item,index)">{{ item }}</li>
+    <div style="overflow:hidden;">
+      <ul class="clear anchor">
+        <li v-for="(item, index) of anchorContentList" :class="{ active: index === 0}" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
     </ul>
+    </div>
     <a href="javascript:;" @click="switchanchorContent()" :class="{ active: showFlag === true}"></a>
     <transition name="slide-fade">
       <ul class="clear anchorContent" v-show="showFlag">
-        <li v-for="(item, index) of anchorContentOfSplited" :class="{ active: index === 0}" :key="item" @click="activeLi(item,index)">{{ item }}</li>
+        <li v-for="(item, index) of anchorContentList" :class="{ active: index === 0}" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
       </ul>
     </transition>
   </div>
@@ -17,19 +19,15 @@ export default {
   data () {
     return {
       showFlag: false,
-      fixed: false
+      fixed: false,
+      click: 0
     }
   },
   props: {
     // 锚点内容
-    anchorContent: {
-      type: String,
-      default: ''
-    }
-  },
-  computed: {
-    anchorContentOfSplited () {
-      return this.anchorContent.split(',')
+    anchorContentList: {
+      type: Array,
+      default: []
     }
   },
   methods: {
@@ -43,10 +41,16 @@ export default {
       this.addClass(document.querySelectorAll('.anchor li')[index], 'active')
       this.addClass(document.querySelectorAll('.anchorContent li')[index], 'active')
       this.fixed = true
-      this.scrollToModel()
+      this.click += 1
+      let navHeight = this.click > 1 ? 40 : 80
+      this.scrollToModel(mid, navHeight)
     },
-    scrollToModel (mid) {
-      this.scroll().top = document.querySelector('#' + mid).offsetTop
+    scrollToModel (mid, navHeight) {
+      console.log(document.getElementById(mid).offsetTop)
+      // let a = document.getElementById(mid).offsetTop
+      // let c = document.documentElement.getBoundingClientRect().width
+      // let b = a - 0.4 * c / 3.75
+      window.scrollTo(0, document.getElementById(mid).offsetTop - navHeight)
     },
     hasClass (elem, cls) {
       cls = cls || ''
@@ -86,6 +90,20 @@ export default {
         }
       }
     }
+  },
+  mounted () {
+    let that = this
+    window.onscroll = function () {
+      if (document.body.scrollTop >= document.querySelector('.navigation').offsetTop) {
+        that.fixed = true
+        that.click = 1
+      }
+      let firstTid = that.anchorContentList[0].templateId
+      if (document.body.scrollTop <= document.getElementById(firstTid).offsetTop) {
+        that.fixed = false
+        that.click = 0
+      }
+    }
   }
 }
 </script>
@@ -117,6 +135,11 @@ export default {
       top: 0;
       left: 0;
     }
+    ul.anchor {
+      height: 0.4rem;
+      overflow: hidden;
+      width: 200%;
+    }
     ul.anchor>li {
         float: left;
         height: 0.4rem;
@@ -147,7 +170,7 @@ export default {
         border-left: 0.5px solid #999;
         width: 0.4rem;
         height: 0.4rem;
-        background: url(../../images/icon_down@2x.png) no-repeat center;
+        background:#464854 url(../../images/icon_down@2x.png) no-repeat center;
         background-size: 0.12rem 0.07rem;
         &.active {
           transform: rotate(180deg)

@@ -17,7 +17,7 @@
         }"></i>
       </div>
       <div class="price clear">
-        <span>¥{{ product.cash }}</span>
+        <span>¥{{ product.newCash }}</span>
         <a class="btn" :href="mShopUrl + 'views/' + product.prodId">去抢购</a>
 
       </div>

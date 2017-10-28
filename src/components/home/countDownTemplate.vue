@@ -34,7 +34,7 @@ export default {
       default: ''
     },
     id: {
-      type: Number,
+      type: String,
       default: ''
     }
   },
@@ -54,7 +54,7 @@ export default {
     }
   },
   mounted () {
-    document.getElementById('countDownTemplate').setAttribute('style', 'background: url(' + this.countdownBg + ') repeat left top')
+    document.querySelector('.countDownTemplate').setAttribute('style', 'background: url(' + this.countdownBg + ') repeat left top')
   }
 }
 </script>

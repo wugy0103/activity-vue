@@ -150,9 +150,15 @@ export default {
       DxHybrid.H5callApp('getQrCode', {'content': url}, function (data) {
         that.QRCodeBase64 = data
       })
+    },
+    getAppVersion: function () {
+      DxHybrid.H5callApp('getAccessToken', {}, function (data) {
+        alert(data)
+      })
     }
   },
   mounted () {
+    this.getAppVersion()
     this.getQRCodeBase64(this.link)
     this.wechatInit(this.wechatShareData)
   }

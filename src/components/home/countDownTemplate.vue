@@ -44,7 +44,6 @@ export default {
     },
     countDownE_cb: function (x) {
       console.log(x)
-      alert('倒计时结束')
       this.$router.replace({
         name: 'timeout',
         params: {

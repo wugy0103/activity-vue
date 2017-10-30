@@ -80,7 +80,6 @@ export default {
       console.log(this.startDate)
       console.log(this.endDate)
       if (this.current < this.startDate) {
-        alert('当前' + this.current + '开始' + this.startDate)
         this.$router.replace({
           name: 'timeout',
           params: {
@@ -89,7 +88,6 @@ export default {
           }
         })
       } else if (this.current > this.endDate) {
-        alert('当前' + this.current + '结束' + this.endDate)
         this.$router.replace({
           name: 'timeout',
           params: {

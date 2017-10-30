@@ -1,5 +1,5 @@
 <template>
-  <div class="navigation" :class="{ active: showFlag === true, fixed: fixed === true, whileStyle: false}">
+  <div class="navigation" :class="{ active: showFlag === true, fixed: fixed === true, whileStyle: anchorColor === '1'}">
     <div style="overflow:hidden;">
       <ul class="clear anchor">
         <li v-for="(item, index) of anchorContentList" :class="{ active: item.templateId === anchorLocation }" :key="item.templateId" @click="activeLi(item.templateId,index)">{{ item.templateName }}</li>
@@ -32,6 +32,10 @@ export default {
     anchorLocation: {
       type: String,
       default: ''
+    },
+    anchorColor: {
+      type: String,
+      default: '0'
     }
   },
   methods: {

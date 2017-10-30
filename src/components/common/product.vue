@@ -81,6 +81,7 @@ export default {
       transform: scale(0.83);
       padding-top: 0.01rem;
       padding-left: 0.01rem;
+      text-align: center;
     }
   }
   .prodInfo {

@@ -154,17 +154,21 @@ export default {
     getAppVersion: function () {
       let that = this
       DxHybrid.H5callApp('getAccessToken', {}, function (data) {
+        alert(data)
         if (data < 3010000) {
           // app分享参数
           that.appShareData.channel = 0
           that.appShareData.ext = {}
+          that.setAppRightBtn()
+          that.appShareInit(that.appShareData)
+        } else {
+          that.getQRCodeBase64(that.link)
         }
       })
     }
   },
   mounted () {
     this.getAppVersion()
-    this.getQRCodeBase64(this.link)
     this.wechatInit(this.wechatShareData)
   }
 }

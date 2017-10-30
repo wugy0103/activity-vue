@@ -134,6 +134,8 @@ export default {
       this.endTime.toString().length === 10 ? this.end = this.endTime * 1000 : this.end = this.endTime
       if (this.currentTime) {
         this.currentTime.toString().length === 10 ? this.current = this.currentTime * 1000 : this.current = this.currentTime
+        // alert(this.current)
+        // alert(this.end)
       } else {
         this.current = (new Date()).getTime()
       }

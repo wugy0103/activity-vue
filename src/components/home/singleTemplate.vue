@@ -1,7 +1,7 @@
 <template>
   <div :id="id" class="singleTemplate clear">
     <img v-if="!!headerPic" :src="headerPic" alt="">
-    <a class="clear" :href="imgArr[0].picLink">
+    <a class="clear" :href="imgArr[0].picLink || 'javascript:;'">
       <img :src="imgArr[0].templatePic">
     </a>
   </div>

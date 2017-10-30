@@ -1,7 +1,7 @@
 <template>
   <div class="iconTemplate clear">
     <a :href="btns[0].link || ipConfig.mShopUrl">
-      <singleTemplate :imgArr="[{templatePic: '/static/images/icon_goHome@2x.png'}]"></singleTemplate>
+      <singleTemplate :imgArr="[{templatePic: '/static/images/icon_goHome@2x.png', picLink: btns[0].link}]"></singleTemplate>
     </a>
     <a href="javascript:;" @click="goTop">
       <singleTemplate :imgArr="[{templatePic: '/static/images/icon_totop@2x.png'}]"></singleTemplate>

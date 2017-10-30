@@ -3,7 +3,7 @@
     <div class="text">
       — 距离{{ shortTitle }}活动结束还剩 —
     </div>
-    <count-down class="count-down" v-on:start_callback="countDownS_cb('start')" v-on:end_callback="countDownE_cb('end')" :current="current" :endTime="endTime" :dayTxt="'天'" :hourTxt="'时'" :minutesTxt="'分'" :secondsTxt="'秒'" :backStyle="fontColor"></count-down>
+    <count-down class="count-down" v-on:start_callback="countDownS_cb('start')" v-on:end_callback="countDownE_cb('end')" :currentTime="current" :endTime="endTime" :dayTxt="'天'" :hourTxt="'时'" :minutesTxt="'分'" :secondsTxt="'秒'" :backStyle="fontColor"></count-down>
   </div>
 </template>
 <script>
@@ -41,9 +41,13 @@ export default {
   methods: {
     countDownS_cb: function (x) {
       console.log(x)
+      // alert(this.current)
+      // alert(this.endTime)
     },
     countDownE_cb: function (x) {
       console.log(x)
+      // alert(this.current)
+      // alert(this.endTime)
       this.$router.replace({
         name: 'timeout',
         params: {

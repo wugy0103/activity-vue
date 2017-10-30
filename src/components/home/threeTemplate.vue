@@ -2,7 +2,7 @@
 <div :id="id">
 	<singleTemplate v-if="!!headerPic" :imgArr="[{templatePic: headerPic}]"></singleTemplate>
 	<div class="threeTemplate clear">
-        <a v-for="item of imgArr" :key="item.id" :href="item.picLink">
+        <a v-for="item of imgArr" :key="item.id" :href="item.picLink || 'javascript:;'">
             <img :src="item.templatePic" />
         </a>
 	</div>

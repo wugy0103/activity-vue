@@ -101,12 +101,15 @@ export default {
             className: 'Toast'
           })
         }, (rej) => {
-          console.log('http://192.168.60.11:8184/shopManage/wechatShare', rej)
+          console.log(url, rej)
           MintUI.Indicator.close()
-          MintUI.Toast({
-            message: '网络繁忙！',
-            className: 'Toast'
-          })
+          console.log(rej.response.status)
+          if (rej.response.status !== 401) {
+            MintUI.Toast({
+              message: '网络繁忙！',
+              className: 'Toast'
+            })
+          }
         })
       }
     }

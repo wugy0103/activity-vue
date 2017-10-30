@@ -153,9 +153,9 @@ export default {
     },
     getAppVersion: function () {
       let that = this
-      DxHybrid.H5callApp('getAccessToken', {}, function (data) {
-        alert(data)
-        if (data < 3010000) {
+      DxHybrid.H5callApp('getAppVersion', {}, function (data) {
+        alert(parseInt(data))
+        if (parseInt(data) < 3010000) {
           // app分享参数
           that.appShareData.channel = 0
           that.appShareData.ext = {}
